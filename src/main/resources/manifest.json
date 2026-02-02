@@ -1,0 +1,11 @@
+{
+  "Group": "dev.twunk",
+  "Name": "ExamplePlugin",
+  "Version": "1.0.0",
+  "Main": "dev.twunk.plugin.ExamplePlugin",
+  "IncludesAssetPack": true,
+  "Dependencies": {
+    "Hytale:EntityModule": "*",
+    "Hytale:BlockModule": "*"
+  }
+}
