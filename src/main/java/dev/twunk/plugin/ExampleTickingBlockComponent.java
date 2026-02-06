@@ -4,10 +4,12 @@ import com.hypixel.hytale.codec.Codec;
 import com.hypixel.hytale.codec.KeyedCodec;
 import com.hypixel.hytale.codec.builder.BuilderCodec;
 import com.hypixel.hytale.component.CommandBuffer;
+import com.hypixel.hytale.component.ComponentType;
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.chunk.WorldChunk;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
+import dev.twunk.ticking.component.IRegisteredComponent;
 import dev.twunk.ticking.component.ITickingComponent;
 import dev.twunk.ticking.response.TickResponse;
 import javax.annotation.Nonnull;
@@ -173,5 +175,18 @@ public class ExampleTickingBlockComponent implements ITickingComponent {
     @Nullable
     public ExampleTickingBlockComponent clone() {
         return new ExampleTickingBlockComponent(ticks);
+    }
+
+    @Nullable
+    private static ComponentType<ChunkStore, ExampleTickingBlockComponent> COMPONENT_TYPE;
+
+    @Nonnull
+    public static final ComponentType<ChunkStore, ExampleTickingBlockComponent> getComponentType() {
+        if (COMPONENT_TYPE == null) {
+            COMPONENT_TYPE = IRegisteredComponent.getComponentType(ExampleTickingBlockComponent.class);
+            return COMPONENT_TYPE;
+        } else {
+            return COMPONENT_TYPE;
+        }
     }
 }

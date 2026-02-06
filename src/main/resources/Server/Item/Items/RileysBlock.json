@@ -16,8 +16,7 @@
     ],
     "BlockEntity": {
       "Components": {
-        "ExampleTickingBlockComponent": {},
-        "ItemContainerState": {}
+        "ExampleTickingBlockComponent": {}
       }
     },
     "Flags": {
@@ -36,7 +35,6 @@
       }
     },
     "Interactions": {
-      "Primary": "Break_Container",
       "Use": "Open_Container"
     }
   },
