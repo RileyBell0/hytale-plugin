@@ -16,7 +16,7 @@
     ],
     "BlockEntity": {
       "Components": {
-        "ExampleTickingBlockComponent": {}
+        "dev.twunk.plugin.ExampleTickingBlockComponent": {}
       }
     },
     "Flags": {

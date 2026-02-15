@@ -1,7 +1,6 @@
 package dev.twunk.plugin;
 
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
-import dev.twunk.interfaces.ModPlugin;
 import javax.annotation.Nonnull;
 
 public class ExamplePlugin extends ModPlugin {
@@ -12,8 +11,10 @@ public class ExamplePlugin extends ModPlugin {
 
     @Override
     protected void setup() {
+        // Register components
         this.registerComponent(ExampleTickingBlockComponent.CODEC);
-        var smartSystem = new ExampleSmartTickingSystem("RileysExampleSystemID");
-        smartSystem.registerToPlugin(this);
+
+        // Register systems
+        new ExampleScheduledTickSystem("RileysExampleSystemID").registerTo(this);
     }
 }
