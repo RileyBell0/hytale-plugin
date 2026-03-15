@@ -1,2 +1,4 @@
-RileysBlock.name = RileysBlock name
-RileysBlock.description = RileysBlock description
+TEST_BlockInfo.name = TEST_BlockInfo
+TEST_BlockInfo.description = TEST_BlockInfo
+TEST_BlockRef.name = TEST_BlockRef
+TEST_BlockRef.description = TEST_BlockRef

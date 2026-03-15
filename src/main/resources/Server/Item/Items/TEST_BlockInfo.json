@@ -1,7 +1,7 @@
 {
   "TranslationProperties": {
-    "Name": "items.RileysBlock.name",
-    "Description": "items.RileysBlock.description"
+    "Name": "items.TEST_BlockInfo.name",
+    "Description": "items.TEST_BlockInfo.description"
   },
   "PlayerAnimationsId": "Block",
   "MaxStack": 100,
@@ -16,7 +16,7 @@
     ],
     "BlockEntity": {
       "Components": {
-        "dev.twunk.plugin.ExampleTickingBlockComponent": {}
+        "dev.twunk.plugin.tests.TestBlockInfoComponent": {}
       }
     },
     "Flags": {
@@ -38,5 +38,5 @@
       "Use": "Open_Container"
     }
   },
-  "Icon": "Icons/ItemsGenerated/RileysBlock.png"
+  "Icon": "Icons/ItemsGenerated/TEST_BlockInfo.png"
 }
