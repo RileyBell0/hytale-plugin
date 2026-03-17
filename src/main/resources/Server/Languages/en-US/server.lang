@@ -9,3 +9,6 @@ TEST_BlockId.description = TEST_BlockId
 
 TEST_BlockType.name = TEST_BlockType
 TEST_BlockType.description = TEST_BlockType
+
+TEST_BlockRefDetection.name = TEST_BlockRefDetection
+TEST_BlockRefDetection.description = TEST_BlockRefDetection

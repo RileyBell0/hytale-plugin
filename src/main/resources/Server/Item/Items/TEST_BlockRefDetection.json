@@ -1,0 +1,42 @@
+{
+  "TranslationProperties": {
+    "Name": "items.TEST_BlockRefDetection.name",
+    "Description": "items.TEST_BlockRefDetection.description"
+  },
+  "PlayerAnimationsId": "Block",
+  "MaxStack": 100,
+  "BlockType": {
+    "Material": "Solid",
+    "DrawRefDetection": "Cube",
+    "Opacity": "Transparent",
+    "Textures": [
+      {
+        "All": "BlockTextures/texture.png"
+      }
+    ],
+    "BlockEntity": {
+      "Components": {
+        "dev.twunk.plugin.tests.TestBlockRefDetectionComponent": {}
+      }
+    },
+    "Flags": {
+      "IsUsable": true
+    },
+    "State": {
+      "Definitions": {
+        "CloseWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Close",
+          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Close.blockyanim"
+        },
+        "OpenWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Open",
+          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Open.blockyanim"
+        }
+      }
+    },
+    "Interactions": {
+      "Use": "Open_Container"
+    }
+  },
+  "Icon": "Icons/ItemsGenerated/TEST_BlockRefDetection.png"
+}
