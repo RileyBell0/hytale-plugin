@@ -1,6 +1,7 @@
 package dev.twunk.plugin;
 
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
+import dev.twunk.plugin.tests.TestBlockIdComponent;
 import dev.twunk.plugin.tests.TestBlockInfoComponent;
 import dev.twunk.plugin.tests.TestBlockRefComponent;
 import javax.annotation.Nonnull;
@@ -16,6 +17,7 @@ public class Plugin extends ModPlugin {
         // Register components
         this.registerComponent(TestBlockRefComponent.CODEC);
         this.registerComponent(TestBlockInfoComponent.CODEC);
+        this.registerComponent(TestBlockIdComponent.CODEC);
 
         // Register systems
         // new ExampleScheduledTickSystem("RileysExampleSystemID").registerTo(this);

@@ -23,7 +23,7 @@ dependencies {
     // Add all JAR files in a directory
     compileOnly(files("libs/HytaleServer.jar"))
 
-    implementation("org.ow2.asm:asm:9.7")
+    implementation("net.bytebuddy:byte-buddy:1.18.7")
 
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
