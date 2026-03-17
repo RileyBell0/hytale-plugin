@@ -15,30 +15,30 @@ import dev.twunk.utils.world.Utils;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class TestBlockIdComponent implements IAutoBlockLifetimeComponent {
+public class TestBlockTypeComponent implements IAutoBlockLifetimeComponent {
 
     private static final HytaleLogger.Api console = HytaleLogger.forEnclosingClass().atInfo();
 
     @Nullable
-    private static ComponentType<ChunkStore, TestBlockIdComponent> COMPONENT_TYPE;
+    private static ComponentType<ChunkStore, TestBlockTypeComponent> COMPONENT_TYPE;
 
     @Nonnull
-    public static final BuilderCodec<TestBlockIdComponent> CODEC = BuilderCodec.builder(
-        TestBlockIdComponent.class,
-        TestBlockIdComponent::new
+    public static final BuilderCodec<TestBlockTypeComponent> CODEC = BuilderCodec.builder(
+        TestBlockTypeComponent.class,
+        TestBlockTypeComponent::new
     ).build();
 
-    public TestBlockIdComponent() {}
+    public TestBlockTypeComponent() {}
 
     @Nullable
-    public TestBlockIdComponent clone() {
-        return new TestBlockIdComponent();
+    public TestBlockTypeComponent clone() {
+        return new TestBlockTypeComponent();
     }
 
     @Nonnull
-    public static final ComponentType<ChunkStore, TestBlockIdComponent> getComponentType() {
+    public static final ComponentType<ChunkStore, TestBlockTypeComponent> getComponentType() {
         if (COMPONENT_TYPE == null) {
-            COMPONENT_TYPE = TwunkLib.getComponentType(TestBlockIdComponent.class);
+            COMPONENT_TYPE = TwunkLib.getComponentType(TestBlockTypeComponent.class);
             return COMPONENT_TYPE;
         } else {
             return COMPONENT_TYPE;
@@ -54,7 +54,7 @@ public class TestBlockIdComponent implements IAutoBlockLifetimeComponent {
     ) {
         final var verbose = false;
 
-        console.log("Added TEST_BlockId block");
+        console.log("Added TEST_BlockType block");
         var worldChunk = Utils.Chunk.WorldChunk_.getWorldChunk(ref);
         if (worldChunk == null) {
             console.log("ERROR: WORLD CHUNK WAS NULL IN SETUp");
@@ -65,7 +65,7 @@ public class TestBlockIdComponent implements IAutoBlockLifetimeComponent {
             console.log("ERROR: coords was null!!!");
             return;
         }
-        var res = Utils.Block.Id.test(ref, worldChunk, commandBuffer, coords);
+        var res = Utils.Block.Type.test(ref, worldChunk, commandBuffer, coords);
 
         console.log("Ran " + res.size() + " test(s)");
         var success = 0;

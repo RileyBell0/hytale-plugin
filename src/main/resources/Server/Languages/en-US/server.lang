@@ -1,4 +1,11 @@
 TEST_BlockInfo.name = TEST_BlockInfo
 TEST_BlockInfo.description = TEST_BlockInfo
+
 TEST_BlockRef.name = TEST_BlockRef
 TEST_BlockRef.description = TEST_BlockRef
+
+TEST_BlockId.name = TEST_BlockId
+TEST_BlockId.description = TEST_BlockId
+
+TEST_BlockType.name = TEST_BlockType
+TEST_BlockType.description = TEST_BlockType
