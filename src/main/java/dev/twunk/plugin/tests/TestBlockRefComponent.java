@@ -52,6 +52,7 @@ public class TestBlockRefComponent implements IAutoBlockLifetimeComponent {
         @Nonnull Store<ChunkStore> store,
         @Nonnull CommandBuffer<ChunkStore> commandBuffer
     ) {
+        final var verbose = false;
         console.log("");
         console.log("Added TEST_BlockRef block");
         var worldChunk = Utils.Chunk.WorldChunk_.getWorldChunk(ref);
@@ -68,9 +69,14 @@ public class TestBlockRefComponent implements IAutoBlockLifetimeComponent {
 
         console.log("Ran " + res.size() + " test(s)");
         var success = 0;
-        for (var test : res) {
+        for (var i = 0; i < res.size(); i++) {
+            final var test = res.get(i);
+
             if (test != null) {
                 success += 1;
+            }
+            if (verbose) {
+                console.log(" - " + i + ") " + test);
             }
         }
         console.log("" + success + "/" + res.size() + " tests successful");
