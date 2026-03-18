@@ -86,6 +86,20 @@ public class TestBlockIdComponent implements IAutoBlockLifetimeComponent {
                 console.log(i + ") Failed test " + i + "!");
             }
         }
+
+        var allTheSame = true;
+        for (var i = 1; i < res.size(); i++) {
+            if (!res.get(i).equals(res.get(i - 1))) {
+                allTheSame = false;
+                break;
+            }
+        }
+
+        if (allTheSame) {
+            console.log("+ All tests were the same");
+        } else {
+            console.log("- WARNING: Not all tests were the same");
+        }
     }
 
     @Override
