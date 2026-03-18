@@ -12,3 +12,6 @@ TEST_BlockType.description = TEST_BlockType
 
 TEST_BlockRefDetection.name = TEST_BlockRefDetection
 TEST_BlockRefDetection.description = TEST_BlockRefDetection
+
+TEST_WorldChunk.name = TEST_WorldChunk
+TEST_WorldChunk.description = TEST_WorldChunk

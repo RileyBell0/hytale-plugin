@@ -1,0 +1,42 @@
+{
+  "TranslationProperties": {
+    "Name": "items.TEST_WorldChunk.name",
+    "Description": "items.TEST_WorldChunk.description"
+  },
+  "PlayerAnimationsId": "Block",
+  "MaxStack": 100,
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Cube",
+    "Opacity": "Transparent",
+    "Textures": [
+      {
+        "All": "BlockTextures/texture.png"
+      }
+    ],
+    "BlockEntity": {
+      "Components": {
+        "dev.twunk.plugin.tests.TestWorldChunkComponent": {}
+      }
+    },
+    "Flags": {
+      "IsUsable": true
+    },
+    "State": {
+      "Definitions": {
+        "CloseWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Close",
+          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Close.blockyanim"
+        },
+        "OpenWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Open",
+          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Open.blockyanim"
+        }
+      }
+    },
+    "Interactions": {
+      "Use": "Open_Container"
+    }
+  },
+  "Icon": "Icons/ItemsGenerated/TEST_WorldChunk.png"
+}
