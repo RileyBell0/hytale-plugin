@@ -56,12 +56,12 @@ public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
         final var verbose = false;
         console.log("");
         console.log("Added TEST_ChunkRef block");
-        var worldChunk = Utils.Chunk.WorldChunk_.getWorldChunk(ref);
+        var worldChunk = Utils.Chunk.WorldChunk_.get(ref);
         if (worldChunk == null) {
             console.log("ERROR: WORLD CHUNK WAS NULL IN SETUp");
             return;
         }
-        var coords = Utils.BlockCoords.Global.getGlobalCoords(ref);
+        var coords = Utils.BlockCoords.Global.get(ref);
         if (coords == null) {
             console.log("ERROR: coords was null!!!");
             return;
