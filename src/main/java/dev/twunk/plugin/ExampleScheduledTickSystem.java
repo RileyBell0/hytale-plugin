@@ -79,7 +79,7 @@
 //             console.log("ERROR: WORLD CHUNK WAS NULL IN SETUp");
 //             return;
 //         }
-//         var coords = Utils.Coords.getGlobalCoords(ref);
+//         var coords = Utils.BlockCoords.Global.getGlobalCoords(ref);
 //         if (coords == null) {
 //             console.log("ERROR: coords was null!!!");
 //             return;
