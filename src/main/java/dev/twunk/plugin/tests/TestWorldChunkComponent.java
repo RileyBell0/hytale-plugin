@@ -54,6 +54,7 @@ public class TestWorldChunkComponent implements IAutoBlockLifetimeComponent {
     ) {
         final var verbose = false;
 
+        console.log("");
         console.log("Added TEST_WorldChunk block");
         var worldChunk = Utils.Chunk.WorldChunk_.getWorldChunk(ref);
         if (worldChunk == null) {

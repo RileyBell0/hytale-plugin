@@ -52,6 +52,7 @@ public class TestBlockRefComponent implements IAutoBlockLifetimeComponent {
         @Nonnull Store<ChunkStore> store,
         @Nonnull CommandBuffer<ChunkStore> commandBuffer
     ) {
+        console.log("");
         console.log("Added TEST_BlockRef block");
         var worldChunk = Utils.Chunk.WorldChunk_.getWorldChunk(ref);
         if (worldChunk == null) {

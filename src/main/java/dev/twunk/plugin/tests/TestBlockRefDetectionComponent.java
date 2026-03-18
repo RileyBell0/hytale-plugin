@@ -54,6 +54,7 @@ public class TestBlockRefDetectionComponent implements IAutoBlockLifetimeCompone
     ) {
         final var verbose = false;
 
+        console.log("");
         console.log("Added TEST_BlockRefDetection block");
         var worldChunk = Utils.Chunk.WorldChunk_.getWorldChunk(ref);
         if (worldChunk == null) {
@@ -73,7 +74,8 @@ public class TestBlockRefDetectionComponent implements IAutoBlockLifetimeCompone
         for (var i = 0; i < res.size(); i++) {
             final var test = res.get(i);
 
-            if (test != null) {
+            // every 2nd test for this one are meant to be "true"
+            if (test == (i % 2 == 0)) {
                 success += 1;
             }
             if (verbose) {
@@ -86,20 +88,6 @@ public class TestBlockRefDetectionComponent implements IAutoBlockLifetimeCompone
             if (entry == null) {
                 console.log(i + ") Failed test " + i + "!");
             }
-        }
-
-        var allTheSame = true;
-        for (var i = 1; i < res.size(); i++) {
-            if (!res.get(i).equals(res.get(i - 1))) {
-                allTheSame = false;
-                break;
-            }
-        }
-
-        if (allTheSame) {
-            console.log("+ All tests were the same");
-        } else {
-            console.log("- WARNING: Not all tests were the same");
         }
     }
 
