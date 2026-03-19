@@ -45,17 +45,17 @@ public class TestBlockRefDetectionComponent implements IAutoBlockLifetimeCompone
         return COMPONENT_TYPE;
     }
 
-    @Override
-    public void onEntityAdded(
+    public static final void runTests(
         @Nonnull Ref<ChunkStore> ref,
         @Nonnull AddReason reason,
         @Nonnull Store<ChunkStore> store,
-        @Nonnull CommandBuffer<ChunkStore> commandBuffer
+        @Nonnull CommandBuffer<ChunkStore> commandBuffer,
+        Boolean verbose
     ) {
-        final var verbose = false;
-
-        console.log("");
-        console.log("Added TEST_BlockRefDetection block");
+        if (verbose != null) {
+            console.log("");
+            console.log("Added TEST_BlockRefDetection block");
+        }
         var worldChunk = Utils.Chunk.WorldChunk_.get(ref);
         if (worldChunk == null) {
             console.log("ERROR: WORLD CHUNK WAS NULL IN SETUp");
@@ -78,7 +78,7 @@ public class TestBlockRefDetectionComponent implements IAutoBlockLifetimeCompone
             if (test == (i % 2 == 0)) {
                 success += 1;
             }
-            if (verbose) {
+            if (verbose != null && verbose) {
                 console.log(" - " + i + ") " + test);
             }
         }
@@ -89,6 +89,17 @@ public class TestBlockRefDetectionComponent implements IAutoBlockLifetimeCompone
                 console.log(i + ") Failed test " + i + "!");
             }
         }
+    }
+
+    @Override
+    public void onEntityAdded(
+        @Nonnull Ref<ChunkStore> ref,
+        @Nonnull AddReason reason,
+        @Nonnull Store<ChunkStore> store,
+        @Nonnull CommandBuffer<ChunkStore> commandBuffer
+    ) {
+        final var verbose = false;
+        runTests(ref, reason, store, commandBuffer, verbose);
     }
 
     @Override

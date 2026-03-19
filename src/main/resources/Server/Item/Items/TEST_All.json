@@ -1,22 +1,22 @@
 {
   "TranslationProperties": {
-    "Name": "items.TEST_BlockRefDetection.name",
-    "Description": "items.TEST_BlockRefDetection.description"
+    "Name": "items.TEST_All.name",
+    "Description": "items.TEST_All.description"
   },
   "PlayerAnimationsId": "Block",
   "MaxStack": 100,
   "BlockType": {
     "Material": "Solid",
-    "DrawRefDetection": "Cube",
+    "DrawType": "Cube",
     "Opacity": "Transparent",
     "Textures": [
       {
-        "All": "BlockTextures/TEST_BlockRefDetection.png"
+        "All": "BlockTextures/TEST_All.png"
       }
     ],
     "BlockEntity": {
       "Components": {
-        "dev.twunk.plugin.tests.TestBlockRefDetectionComponent": {}
+        "dev.twunk.plugin.tests.TestAllComponent": {}
       }
     },
     "Flags": {
@@ -38,5 +38,5 @@
       "Use": "Open_Container"
     }
   },
-  "Icon": "Icons/ItemsGenerated/TEST_BlockRefDetection.png"
+  "Icon": "Icons/ItemsGenerated/TEST_All.png"
 }

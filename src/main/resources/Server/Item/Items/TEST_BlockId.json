@@ -11,7 +11,7 @@
     "Opacity": "Transparent",
     "Textures": [
       {
-        "All": "BlockTextures/texture.png"
+        "All": "BlockTextures/TEST_BlockId.png"
       }
     ],
     "BlockEntity": {

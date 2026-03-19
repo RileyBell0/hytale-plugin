@@ -46,16 +46,17 @@ public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
         }
     }
 
-    @Override
-    public void onEntityAdded(
+    public static final void runTests(
         @Nonnull Ref<ChunkStore> ref,
         @Nonnull AddReason reason,
         @Nonnull Store<ChunkStore> store,
-        @Nonnull CommandBuffer<ChunkStore> commandBuffer
+        @Nonnull CommandBuffer<ChunkStore> commandBuffer,
+        Boolean verbose
     ) {
-        final var verbose = false;
-        console.log("");
-        console.log("Added TEST_ChunkRef block");
+        if (verbose != null) {
+            console.log("");
+            console.log("Added TEST_ChunkRef block");
+        }
         var worldChunk = Utils.Chunk.WorldChunk_.get(ref);
         if (worldChunk == null) {
             console.log("ERROR: WORLD CHUNK WAS NULL IN SETUp");
@@ -76,7 +77,7 @@ public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
             if (test != null) {
                 success += 1;
             }
-            if (verbose) {
+            if (verbose != null && verbose) {
                 console.log(" - " + i + ") " + test);
             }
         }
@@ -107,7 +108,7 @@ public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
             var curr = res.get(i);
             if (curr == null || !curr.isValid() || !Utils.Block.isChunkRef(curr)) {
                 allAreChunkRefs = false;
-                if (verbose) {
+                if (verbose != null && verbose) {
                     console.log("  - " + i + " is not a valid chunk ref!!!");
                     if (curr == null) {
                         console.log("    - null");
@@ -133,6 +134,17 @@ public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
         } else {
             console.log("+ All are chunk refs");
         }
+    }
+
+    @Override
+    public void onEntityAdded(
+        @Nonnull Ref<ChunkStore> ref,
+        @Nonnull AddReason reason,
+        @Nonnull Store<ChunkStore> store,
+        @Nonnull CommandBuffer<ChunkStore> commandBuffer
+    ) {
+        final var verbose = false;
+        runTests(ref, reason, store, commandBuffer, verbose);
     }
 
     @Override

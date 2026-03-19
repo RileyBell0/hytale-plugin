@@ -46,16 +46,17 @@ public class TestBlockInfoComponent implements IAutoBlockLifetimeComponent {
         }
     }
 
-    @Override
-    public void onEntityAdded(
+    public static final void runTests(
         @Nonnull Ref<ChunkStore> ref,
         @Nonnull AddReason reason,
         @Nonnull Store<ChunkStore> store,
-        @Nonnull CommandBuffer<ChunkStore> commandBuffer
+        @Nonnull CommandBuffer<ChunkStore> commandBuffer,
+        Boolean verbose
     ) {
-        final var verbose = false;
-        console.log("");
-        console.log("Added TEST_BlockInfo block");
+        if (verbose != null) {
+            console.log("");
+            console.log("Added TEST_BlockInfo block");
+        }
         var worldChunk = Utils.Chunk.WorldChunk_.get(ref);
         if (worldChunk == null) {
             console.log("ERROR: WORLD CHUNK WAS NULL IN SETUp");
@@ -76,7 +77,7 @@ public class TestBlockInfoComponent implements IAutoBlockLifetimeComponent {
             if (test != null) {
                 success += 1;
             }
-            if (verbose) {
+            if (verbose != null && verbose) {
                 console.log(" - " + i + ") " + test);
             }
         }
@@ -101,6 +102,17 @@ public class TestBlockInfoComponent implements IAutoBlockLifetimeComponent {
         } else {
             console.log("- WARNING: Not all tests were the same");
         }
+    }
+
+    @Override
+    public void onEntityAdded(
+        @Nonnull Ref<ChunkStore> ref,
+        @Nonnull AddReason reason,
+        @Nonnull Store<ChunkStore> store,
+        @Nonnull CommandBuffer<ChunkStore> commandBuffer
+    ) {
+        final var verbose = false;
+        runTests(ref, reason, store, commandBuffer, verbose);
     }
 
     @Override

@@ -15,34 +15,34 @@ import dev.twunk.utils.world.Utils;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class TestWorldChunkComponent implements IAutoBlockLifetimeComponent {
+public class TestComponent_Component implements IAutoBlockLifetimeComponent {
 
     private static final HytaleLogger.Api console = HytaleLogger.forEnclosingClass().atInfo();
 
     @Nullable
-    private static ComponentType<ChunkStore, TestWorldChunkComponent> COMPONENT_TYPE;
+    private static ComponentType<ChunkStore, TestComponent_Component> COMPONENT_TYPE;
 
     @Nonnull
-    public static final BuilderCodec<TestWorldChunkComponent> CODEC = BuilderCodec.builder(
-        TestWorldChunkComponent.class,
-        TestWorldChunkComponent::new
+    public static final BuilderCodec<TestComponent_Component> CODEC = BuilderCodec.builder(
+        TestComponent_Component.class,
+        TestComponent_Component::new
     ).build();
 
-    public TestWorldChunkComponent() {}
+    public TestComponent_Component() {}
 
     @Nullable
-    public TestWorldChunkComponent clone() {
-        return new TestWorldChunkComponent();
+    public TestComponent_Component clone() {
+        return new TestComponent_Component();
     }
 
     @Nonnull
-    public static final ComponentType<ChunkStore, TestWorldChunkComponent> getComponentType() {
+    @SuppressWarnings("null")
+    public static final ComponentType<ChunkStore, TestComponent_Component> getComponentType() {
         if (COMPONENT_TYPE == null) {
-            COMPONENT_TYPE = TwunkLib.getComponentType(TestWorldChunkComponent.class);
-            return COMPONENT_TYPE;
-        } else {
-            return COMPONENT_TYPE;
+            COMPONENT_TYPE = TwunkLib.getComponentType(TestComponent_Component.class);
         }
+
+        return COMPONENT_TYPE;
     }
 
     public static final void runTests(
@@ -54,7 +54,7 @@ public class TestWorldChunkComponent implements IAutoBlockLifetimeComponent {
     ) {
         if (verbose != null) {
             console.log("");
-            console.log("Added TEST_WorldChunk block");
+            console.log("Added TEST_Component_ block");
         }
         var worldChunk = Utils.Chunk.WorldChunk_.get(ref);
         if (worldChunk == null) {
@@ -66,43 +66,7 @@ public class TestWorldChunkComponent implements IAutoBlockLifetimeComponent {
             console.log("ERROR: coords was null!!!");
             return;
         }
-        var res = Utils.Chunk.WorldChunk_.test(ref, worldChunk, commandBuffer, coords);
-
-        if (verbose != null) {
-            console.log("Ran " + res.size() + " test(s)");
-        }
-        var success = 0;
-        for (var i = 0; i < res.size(); i++) {
-            final var test = res.get(i);
-
-            if (test != null) {
-                success += 1;
-            }
-            if (verbose != null && verbose) {
-                console.log(" - " + i + ") " + test);
-            }
-        }
-        console.log("" + success + "/" + res.size() + " tests successful");
-        for (var i = 0; i < res.size(); i++) {
-            var entry = res.get(i);
-            if (entry == null) {
-                console.log(i + ") Failed test " + i + "!");
-            }
-        }
-
-        var allTheSame = true;
-        for (var i = 1; i < res.size(); i++) {
-            if (!res.get(i).equals(res.get(i - 1))) {
-                allTheSame = false;
-                break;
-            }
-        }
-
-        if (allTheSame) {
-            console.log("+ All tests were the same");
-        } else {
-            console.log("- WARNING: Not all tests were the same");
-        }
+        Utils.Component_.test(ref, worldChunk, commandBuffer, coords, verbose);
     }
 
     @Override
@@ -112,8 +76,7 @@ public class TestWorldChunkComponent implements IAutoBlockLifetimeComponent {
         @Nonnull Store<ChunkStore> store,
         @Nonnull CommandBuffer<ChunkStore> commandBuffer
     ) {
-        final var verbose = false;
-        runTests(ref, reason, store, commandBuffer, verbose);
+        runTests(ref, reason, store, commandBuffer, false);
     }
 
     @Override
