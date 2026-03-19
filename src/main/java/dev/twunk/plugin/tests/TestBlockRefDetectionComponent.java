@@ -69,7 +69,9 @@ public class TestBlockRefDetectionComponent implements IAutoBlockLifetimeCompone
 
         var res = Utils.Block.testRefDetection(ref);
 
-        console.log("Ran " + res.size() + " test(s)");
+        if (verbose != null) {
+            console.log("Ran " + res.size() + " test(s)");
+        }
         var success = 0;
         for (var i = 0; i < res.size(); i++) {
             final var test = res.get(i);
@@ -82,11 +84,21 @@ public class TestBlockRefDetectionComponent implements IAutoBlockLifetimeCompone
                 console.log(" - " + i + ") " + test);
             }
         }
-        console.log("" + success + "/" + res.size() + " tests successful");
-        for (var i = 0; i < res.size(); i++) {
-            var entry = res.get(i);
-            if (entry == null) {
-                console.log(i + ") Failed test " + i + "!");
+        if (verbose != null) {
+            console.log("" + success + "/" + res.size() + " tests successful");
+            for (var i = 0; i < res.size(); i++) {
+                var entry = res.get(i);
+                if (entry == null) {
+                    console.log(i + ") Failed test " + i + "!");
+                }
+            }
+        }
+
+        if (verbose == null) {
+            if (success == res.size()) {
+                console.log("+ (4) SUCCESS: TEST_BlockRefDetection");
+            } else {
+                console.log("- (4) FAILED:  TEST_BlockRefDetection");
             }
         }
     }

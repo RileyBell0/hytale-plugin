@@ -82,11 +82,13 @@ public class TestWorldChunkComponent implements IAutoBlockLifetimeComponent {
                 console.log(" - " + i + ") " + test);
             }
         }
-        console.log("" + success + "/" + res.size() + " tests successful");
-        for (var i = 0; i < res.size(); i++) {
-            var entry = res.get(i);
-            if (entry == null) {
-                console.log(i + ") Failed test " + i + "!");
+        if (verbose != null) {
+            console.log("" + success + "/" + res.size() + " tests successful");
+            for (var i = 0; i < res.size(); i++) {
+                var entry = res.get(i);
+                if (entry == null) {
+                    console.log(i + ") Failed test " + i + "!");
+                }
             }
         }
 
@@ -98,10 +100,19 @@ public class TestWorldChunkComponent implements IAutoBlockLifetimeComponent {
             }
         }
 
-        if (allTheSame) {
-            console.log("+ All tests were the same");
-        } else {
-            console.log("- WARNING: Not all tests were the same");
+        if (verbose != null) {
+            if (allTheSame) {
+                console.log("+ All tests were the same");
+            } else {
+                console.log("- WARNING: Not all tests were the same");
+            }
+        }
+        if (verbose == null) {
+            if (success == res.size() && allTheSame) {
+                console.log("+ (7) SUCCESS: TEST_WorldChunk");
+            } else {
+                console.log("- (7) FAILED:  TEST_WorldChunk");
+            }
         }
     }
 

@@ -69,7 +69,9 @@ public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
         }
         var res = Utils.Chunk.Ref_.test(ref, worldChunk, commandBuffer, coords);
 
-        console.log("Ran " + res.size() + " test(s)");
+        if (verbose != null) {
+            console.log("Ran " + res.size() + " test(s)");
+        }
         var success = 0;
         for (var i = 0; i < res.size(); i++) {
             final var test = res.get(i);
@@ -81,11 +83,13 @@ public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
                 console.log(" - " + i + ") " + test);
             }
         }
-        console.log("" + success + "/" + res.size() + " tests successful");
-        for (var i = 0; i < res.size(); i++) {
-            var entry = res.get(i);
-            if (entry == null) {
-                console.log(i + ") Failed test " + i + "!");
+        if (verbose != null) {
+            console.log("" + success + "/" + res.size() + " tests successful");
+            for (var i = 0; i < res.size(); i++) {
+                var entry = res.get(i);
+                if (entry == null) {
+                    console.log(i + ") Failed test " + i + "!");
+                }
             }
         }
 
@@ -97,12 +101,13 @@ public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
             }
         }
 
-        if (allTheSame) {
-            console.log("+ All tests were the same");
-        } else {
-            console.log("- WARNING: Not all tests were the same");
+        if (verbose != null) {
+            if (allTheSame) {
+                console.log("+ All tests were the same");
+            } else {
+                console.log("- WARNING: Not all tests were the same");
+            }
         }
-
         var allAreChunkRefs = true;
         for (var i = 0; i < res.size(); i++) {
             var curr = res.get(i);
@@ -129,10 +134,20 @@ public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
             }
         }
 
-        if (!allAreChunkRefs) {
-            console.log("- WARNING: not all refs are chunk refs");
-        } else {
-            console.log("+ All are chunk refs");
+        if (verbose != null) {
+            if (!allAreChunkRefs) {
+                console.log("- WARNING: not all refs are chunk refs");
+            } else {
+                console.log("+ All are chunk refs");
+            }
+        }
+
+        if (verbose == null) {
+            if (success == res.size() && allTheSame && allAreChunkRefs) {
+                console.log("+ (6) SUCCESS: TEST_ChunkRef");
+            } else {
+                console.log("- (6) FAILED:  TEST_ChunkRef");
+            }
         }
     }
 

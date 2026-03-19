@@ -68,7 +68,9 @@ public class TestBlockRefComponent implements IAutoBlockLifetimeComponent {
         }
         var res = Utils.Block.Ref_.test(ref, worldChunk, commandBuffer, coords);
 
-        console.log("Ran " + res.size() + " test(s)");
+        if (verbose != null) {
+            console.log("Ran " + res.size() + " test(s)");
+        }
         var success = 0;
         for (var i = 0; i < res.size(); i++) {
             final var test = res.get(i);
@@ -80,11 +82,13 @@ public class TestBlockRefComponent implements IAutoBlockLifetimeComponent {
                 console.log(" - " + i + ") " + test);
             }
         }
-        console.log("" + success + "/" + res.size() + " tests successful");
-        for (var i = 0; i < res.size(); i++) {
-            var entry = res.get(i);
-            if (entry == null) {
-                console.log(i + ") Failed test " + i + "!");
+        if (verbose != null) {
+            console.log("" + success + "/" + res.size() + " tests successful");
+            for (var i = 0; i < res.size(); i++) {
+                var entry = res.get(i);
+                if (entry == null) {
+                    console.log(i + ") Failed test " + i + "!");
+                }
             }
         }
 
@@ -96,10 +100,20 @@ public class TestBlockRefComponent implements IAutoBlockLifetimeComponent {
             }
         }
 
-        if (allTheSame) {
-            console.log("+ All tests were the same");
-        } else {
-            console.log("- WARNING: Not all tests were the same");
+        if (verbose != null) {
+            if (allTheSame) {
+                console.log("+ All tests were the same");
+            } else {
+                console.log("- WARNING: Not all tests were the same");
+            }
+        }
+
+        if (verbose == null) {
+            if (success == res.size() && allTheSame) {
+                console.log("+ (3) SUCCESS: TEST_BlockRef");
+            } else {
+                console.log("- (3) FAILED:  TEST_BlockRef");
+            }
         }
     }
 

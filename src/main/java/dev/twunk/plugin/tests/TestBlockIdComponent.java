@@ -50,7 +50,8 @@ public class TestBlockIdComponent implements IAutoBlockLifetimeComponent {
         @Nonnull AddReason reason,
         @Nonnull Store<ChunkStore> store,
         @Nonnull CommandBuffer<ChunkStore> commandBuffer,
-        Boolean verbose
+        Boolean verbose,
+        @Nonnull String blockId
     ) {
         if (verbose != null) {
             console.log("");
@@ -66,7 +67,7 @@ public class TestBlockIdComponent implements IAutoBlockLifetimeComponent {
             console.log("ERROR: coords was null!!!");
             return;
         }
-        var res = Utils.Block.Id.test(ref, worldChunk, commandBuffer, coords);
+        var res = Utils.Block.Id.test(ref, worldChunk, commandBuffer, coords, blockId);
 
         if (verbose != null) {
             console.log("Ran " + res.size() + " test(s)");
@@ -107,8 +108,13 @@ public class TestBlockIdComponent implements IAutoBlockLifetimeComponent {
                 console.log("- WARNING: Not all tests were the same");
             }
         }
-        if (verbose == null && success == res.size() && allTheSame) {
-            console.log("+ SUCCESS: TEST_BlockId");
+
+        if (verbose == null) {
+            if (success == res.size() && allTheSame) {
+                console.log("+ (1) SUCCESS: TEST_BlockId");
+            } else {
+                console.log("- (1) FAILED:  TEST_BlockId");
+            }
         }
     }
 
@@ -120,7 +126,7 @@ public class TestBlockIdComponent implements IAutoBlockLifetimeComponent {
         @Nonnull CommandBuffer<ChunkStore> commandBuffer
     ) {
         final var verbose = false;
-        runTests(ref, reason, store, commandBuffer, verbose);
+        runTests(ref, reason, store, commandBuffer, verbose, "TEST_BlockId");
     }
 
     @Override

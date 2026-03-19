@@ -67,8 +67,9 @@ public class TestBlockTypeComponent implements IAutoBlockLifetimeComponent {
             return;
         }
         var res = Utils.Block.Type.test(ref, worldChunk, commandBuffer, coords);
-
-        console.log("Ran " + res.size() + " test(s)");
+        if (verbose != null) {
+            console.log("Ran " + res.size() + " test(s)");
+        }
         var success = 0;
         for (var i = 0; i < res.size(); i++) {
             final var test = res.get(i);
@@ -80,11 +81,13 @@ public class TestBlockTypeComponent implements IAutoBlockLifetimeComponent {
                 console.log(" - " + i + ") " + test);
             }
         }
-        console.log("" + success + "/" + res.size() + " tests successful");
-        for (var i = 0; i < res.size(); i++) {
-            var entry = res.get(i);
-            if (entry == null) {
-                console.log(i + ") Failed test " + i + "!");
+        if (verbose != null) {
+            console.log("" + success + "/" + res.size() + " tests successful");
+            for (var i = 0; i < res.size(); i++) {
+                var entry = res.get(i);
+                if (entry == null) {
+                    console.log(i + ") Failed test " + i + "!");
+                }
             }
         }
 
@@ -96,10 +99,19 @@ public class TestBlockTypeComponent implements IAutoBlockLifetimeComponent {
             }
         }
 
-        if (allTheSame) {
-            console.log("+ All tests were the same");
-        } else {
-            console.log("- WARNING: Not all tests were the same");
+        if (verbose != null) {
+            if (allTheSame) {
+                console.log("+ All tests were the same");
+            } else {
+                console.log("- WARNING: Not all tests were the same");
+            }
+        }
+        if (verbose == null) {
+            if (success == res.size() && allTheSame) {
+                console.log("+ (5) SUCCESS: TEST_BlockType");
+            } else {
+                console.log("- (5) FAILED:  TEST_BlockType");
+            }
         }
     }
 

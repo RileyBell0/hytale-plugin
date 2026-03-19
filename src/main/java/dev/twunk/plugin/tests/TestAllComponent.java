@@ -56,7 +56,7 @@ public class TestAllComponent implements IAutoBlockLifetimeComponent {
         console.log("");
         console.log("Added TEST_All block");
 
-        TestBlockIdComponent.runTests(ref, reason, store, commandBuffer, verbose);
+        TestBlockIdComponent.runTests(ref, reason, store, commandBuffer, verbose, "TEST_All");
         TestBlockInfoComponent.runTests(ref, reason, store, commandBuffer, verbose);
         TestBlockRefComponent.runTests(ref, reason, store, commandBuffer, verbose);
         TestBlockRefDetectionComponent.runTests(ref, reason, store, commandBuffer, verbose);
