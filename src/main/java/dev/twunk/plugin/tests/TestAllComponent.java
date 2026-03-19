@@ -64,6 +64,7 @@ public class TestAllComponent implements IAutoBlockLifetimeComponent {
         TestChunkRefComponent.runTests(ref, reason, store, commandBuffer, verbose);
         TestWorldChunkComponent.runTests(ref, reason, store, commandBuffer, verbose);
         TestBlockCoordsComponent.runTests(ref, reason, store, commandBuffer, verbose);
+        TestChunkCoordsComponent.runTests(ref, reason, store, commandBuffer, verbose);
         TestComponent_Component.runTests(ref, reason, store, commandBuffer, verbose);
     }
 

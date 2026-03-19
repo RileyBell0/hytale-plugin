@@ -8,6 +8,7 @@ import dev.twunk.plugin.tests.TestBlockInfoComponent;
 import dev.twunk.plugin.tests.TestBlockRefComponent;
 import dev.twunk.plugin.tests.TestBlockRefDetectionComponent;
 import dev.twunk.plugin.tests.TestBlockTypeComponent;
+import dev.twunk.plugin.tests.TestChunkCoordsComponent;
 import dev.twunk.plugin.tests.TestChunkRefComponent;
 import dev.twunk.plugin.tests.TestComponent_Component;
 import dev.twunk.plugin.tests.TestWorldChunkComponent;
@@ -31,6 +32,7 @@ public class Plugin extends ModPlugin {
         this.registerComponent(TestChunkRefComponent.CODEC);
         this.registerComponent(TestComponent_Component.CODEC);
         this.registerComponent(TestBlockCoordsComponent.CODEC);
+        this.registerComponent(TestChunkCoordsComponent.CODEC);
         this.registerComponent(TestAllComponent.CODEC);
 
         // Register systems
