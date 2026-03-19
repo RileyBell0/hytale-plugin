@@ -2,6 +2,7 @@ package dev.twunk.plugin;
 
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import dev.twunk.plugin.tests.TestAllComponent;
+import dev.twunk.plugin.tests.TestBlockCoordsComponent;
 import dev.twunk.plugin.tests.TestBlockIdComponent;
 import dev.twunk.plugin.tests.TestBlockInfoComponent;
 import dev.twunk.plugin.tests.TestBlockRefComponent;
@@ -29,6 +30,7 @@ public class Plugin extends ModPlugin {
         this.registerComponent(TestWorldChunkComponent.CODEC);
         this.registerComponent(TestChunkRefComponent.CODEC);
         this.registerComponent(TestComponent_Component.CODEC);
+        this.registerComponent(TestBlockCoordsComponent.CODEC);
         this.registerComponent(TestAllComponent.CODEC);
 
         // Register systems
