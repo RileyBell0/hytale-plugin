@@ -2,7 +2,6 @@ package dev.twunk.plugin.tests;
 
 import com.hypixel.hytale.codec.builder.BuilderCodec;
 import com.hypixel.hytale.component.CommandBuffer;
-import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.math.vector.Vector3i;
 import com.hypixel.hytale.protocol.InteractionType;
 import com.hypixel.hytale.protocol.ItemWithAllMetadata;
@@ -30,8 +29,6 @@ public class TestAllInteraction extends SimpleBlockInteraction {
         TestAllInteraction::new,
         SimpleBlockInteraction.CODEC
     ).build();
-
-    private static final HytaleLogger.Api console = HytaleLogger.forEnclosingClass().atInfo();
 
     @Override
     protected void interactWithBlock(
@@ -72,13 +69,13 @@ public class TestAllInteraction extends SimpleBlockInteraction {
         @Nonnull World world,
         @Nonnull Vector3i pos
     ) {
-        console.log("INTERACT WITH: " + this.getClass().getName());
-        console.log("interactionType:    " + interactionType);
-        console.log("interactionContext: " + interactionContext);
-        console.log("heldItem:           " + heldItem);
-        console.log("world:              " + world);
-        console.log("pos:                " + pos);
-        console.log("");
+        Chat.log("INTERACT WITH: " + this.getClass().getName());
+        Chat.log("interactionType:    " + interactionType);
+        Chat.log("interactionContext: " + interactionContext);
+        Chat.log("heldItem:           " + heldItem);
+        Chat.log("world:              " + world);
+        Chat.log("pos:                " + pos);
+        Chat.log("");
     }
 
     @Nonnull

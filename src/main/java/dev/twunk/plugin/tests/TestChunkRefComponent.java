@@ -7,17 +7,15 @@ import com.hypixel.hytale.component.ComponentType;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.RemoveReason;
 import com.hypixel.hytale.component.Store;
-import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
 import dev.twunk.*;
 import dev.twunk.interfaces.component.auto.IAutoBlockLifetimeComponent;
 import dev.twunk.utils.*;
+import dev.twunk.utils.message.Chat;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
-
-    private static final HytaleLogger.Api console = HytaleLogger.forEnclosingClass().atInfo();
 
     @Nullable
     private static ComponentType<ChunkStore, TestChunkRefComponent> COMPONENT_TYPE;
@@ -54,23 +52,23 @@ public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
         Boolean verbose
     ) {
         if (verbose != null) {
-            console.log("");
-            console.log("Added TEST_ChunkRef block");
+            Chat.log("");
+            Chat.log("Added TEST_ChunkRef block");
         }
         var worldChunk = ChunkUtils.WorldChunk_.get(ref);
         if (worldChunk == null) {
-            console.log("ERROR: WORLD CHUNK WAS NULL IN SETUp");
+            Chat.log("ERROR: WORLD CHUNK WAS NULL IN SETUp");
             return;
         }
         var coords = BlockUtils.Coords.Global.get(ref);
         if (coords == null) {
-            console.log("ERROR: coords was null!!!");
+            Chat.log("ERROR: coords was null!!!");
             return;
         }
         var res = ChunkUtils.Ref_.test(ref, worldChunk, commandBuffer, coords);
 
         if (verbose != null) {
-            console.log("Ran " + res.size() + " test(s)");
+            Chat.log("Ran " + res.size() + " test(s)");
         }
         var success = 0;
         for (var i = 0; i < res.size(); i++) {
@@ -80,15 +78,15 @@ public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
                 success += 1;
             }
             if (verbose != null && verbose) {
-                console.log(" - " + i + ") " + test);
+                Chat.log(" - " + i + ") " + test);
             }
         }
         if (verbose != null) {
-            console.log("" + success + "/" + res.size() + " tests successful");
+            Chat.log("" + success + "/" + res.size() + " tests successful");
             for (var i = 0; i < res.size(); i++) {
                 var entry = res.get(i);
                 if (entry == null) {
-                    console.log(i + ") Failed test " + i + "!");
+                    Chat.log(i + ") Failed test " + i + "!");
                 }
             }
         }
@@ -103,9 +101,9 @@ public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
 
         if (verbose != null) {
             if (allTheSame) {
-                console.log("+ All tests were the same");
+                Chat.log("+ All tests were the same");
             } else {
-                console.log("- WARNING: Not all tests were the same");
+                Chat.log("- WARNING: Not all tests were the same");
             }
         }
         var allAreChunkRefs = true;
@@ -114,20 +112,20 @@ public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
             if (curr == null || !curr.isValid() || !BlockUtils.isChunkRef(curr)) {
                 allAreChunkRefs = false;
                 if (verbose != null && verbose) {
-                    console.log("  - " + i + " is not a valid chunk ref!!!");
+                    Chat.log("  - " + i + " is not a valid chunk ref!!!");
                     if (curr == null) {
-                        console.log("    - null");
+                        Chat.log("    - null");
                     } else if (!curr.isValid()) {
-                        console.log("    - not valid");
+                        Chat.log("    - not valid");
                     }
 
                     if (curr != null && curr.isValid() && BlockUtils.isChunkRef(curr)) {
-                        console.log("    + it is a chunk ref");
+                        Chat.log("    + it is a chunk ref");
                     }
                     if (curr != null && curr.isValid() && BlockUtils.isBlockRef(curr)) {
-                        console.log("    - heck, its a block ref???");
+                        Chat.log("    - heck, its a block ref???");
                     }
-                    console.log("    - " + curr);
+                    Chat.log("    - " + curr);
                 } else {
                     break;
                 }
@@ -136,17 +134,17 @@ public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
 
         if (verbose != null) {
             if (!allAreChunkRefs) {
-                console.log("- WARNING: not all refs are chunk refs");
+                Chat.log("- WARNING: not all refs are chunk refs");
             } else {
-                console.log("+ All are chunk refs");
+                Chat.log("+ All are chunk refs");
             }
         }
 
         if (verbose == null) {
             if (success == res.size() && allTheSame && allAreChunkRefs) {
-                console.log("+ (6) SUCCESS: TEST_ChunkRef");
+                Chat.log("+ (6) SUCCESS: TEST_ChunkRef");
             } else {
-                console.log("- (6) FAILED:  TEST_ChunkRef");
+                Chat.log("- (6) FAILED:  TEST_ChunkRef");
             }
         }
     }

@@ -7,16 +7,14 @@ import com.hypixel.hytale.component.ComponentType;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.RemoveReason;
 import com.hypixel.hytale.component.Store;
-import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
 import dev.twunk.*;
 import dev.twunk.interfaces.component.auto.IAutoBlockLifetimeComponent;
+import dev.twunk.utils.message.Chat;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class TestAllComponent implements IAutoBlockLifetimeComponent {
-
-    private static final HytaleLogger.Api console = HytaleLogger.forEnclosingClass().atInfo();
 
     @Nullable
     private static ComponentType<ChunkStore, TestAllComponent> COMPONENT_TYPE;
@@ -53,8 +51,8 @@ public class TestAllComponent implements IAutoBlockLifetimeComponent {
         @Nonnull CommandBuffer<ChunkStore> commandBuffer
     ) {
         final Boolean verbose = null;
-        console.log("");
-        console.log("Added TEST_All block");
+        Chat.log("");
+        Chat.log("Added TEST_All block");
 
         TestBlockIdComponent.runTests(ref, reason, store, commandBuffer, verbose, "TEST_All");
         TestBlockInfoComponent.runTests(ref, reason, store, commandBuffer, verbose);
