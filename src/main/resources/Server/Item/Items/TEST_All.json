@@ -35,7 +35,17 @@
       }
     },
     "Interactions": {
-      "Use": "Open_Container"
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "Condition",
+            "Crouching": true,
+            "Next": {
+              "Type": "dev.twunk.plugin.tests.TestAllInteraction"
+            }
+          }
+        ]
+      }
     }
   },
   "Icon": "Icons/ItemsGenerated/TEST_All.png"

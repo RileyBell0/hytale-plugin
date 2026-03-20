@@ -2,6 +2,7 @@ package dev.twunk.plugin;
 
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import dev.twunk.plugin.tests.TestAllComponent;
+import dev.twunk.plugin.tests.TestAllInteraction;
 import dev.twunk.plugin.tests.TestBlockCoordsComponent;
 import dev.twunk.plugin.tests.TestBlockIdComponent;
 import dev.twunk.plugin.tests.TestBlockInfoComponent;
@@ -34,6 +35,9 @@ public class Plugin extends ModPlugin {
         this.registerComponent(TestBlockCoordsComponent.CODEC);
         this.registerComponent(TestChunkCoordsComponent.CODEC);
         this.registerComponent(TestAllComponent.CODEC);
+
+        // Register interactions
+        this.registerInteraction(TestAllInteraction.CODEC);
 
         // Register systems
         // new ExampleScheduledTickSystem("RileysExampleSystemID").registerTo(this);
