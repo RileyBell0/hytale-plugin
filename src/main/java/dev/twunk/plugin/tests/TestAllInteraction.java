@@ -4,8 +4,6 @@ import com.hypixel.hytale.codec.builder.BuilderCodec;
 import com.hypixel.hytale.component.CommandBuffer;
 import com.hypixel.hytale.math.vector.Vector3i;
 import com.hypixel.hytale.protocol.InteractionType;
-import com.hypixel.hytale.protocol.ItemWithAllMetadata;
-import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.entity.InteractionContext;
 import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.inventory.ItemStack;
@@ -16,8 +14,8 @@ import com.hypixel.hytale.server.core.plugin.registry.CodecMapRegistry.Assets;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import dev.twunk.plugin.ModPlugin;
+import dev.twunk.utils.ItemUtils;
 import dev.twunk.utils.message.Chat;
-import dev.twunk.utils.message.Toast;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -44,20 +42,29 @@ public class TestAllInteraction extends SimpleBlockInteraction {
         if (player == null) {
             throw new RuntimeException("Failed to get player!");
         }
+        var playerRef = player.getReference();
+        if (playerRef == null) {
+            Chat.log("FAILED to get player ref!");
+            return;
+        }
 
-        var primaryMessage = Message.raw("THIS WORKS!!!");
-        var secondaryMessage = Message.raw("This is the secondary message").color("#228B22");
+        // var primaryMessage = Message.raw("THIS WORKS!!!");
+        // var secondaryMessage = Message.raw("This is the secondary message").color("#228B22");
 
-        Toast.build("THIS WORKS!!!", secondaryMessage)
-            .setItem((ItemWithAllMetadata) new ItemStack("Weapon_Sword_Mithril", 1).toPacket())
-            .send(player);
+        // Toast.build("THIS WORKS!!!", secondaryMessage)
+        //     .setItem((ItemWithAllMetadata) new ItemStack("Weapon_Sword_Mithril", 1).toPacket())
+        //     .send(player);
 
-        Chat.sendMessage(player, "RAW: ", primaryMessage);
+        // Chat.sendMessage(player, "RAW: ", primaryMessage);
 
-        Chat.log(Message.raw("UNIVERSE: ").color("#494949"), primaryMessage);
-        Chat.log(world, Message.raw("WORLD:    ").color("#494949"), primaryMessage);
-        Chat.log(player, Message.raw("PLAYER:   ").color("#494949"), primaryMessage);
+        // Chat.log(Message.raw("UNIVERSE: ").color("#494949"), primaryMessage);
+        // Chat.log(world, Message.raw("WORLD:    ").color("#494949"), primaryMessage);
+        // Chat.log(player, Message.raw("PLAYER:   ").color("#494949"), primaryMessage);
 
+        Chat.log(
+            "Spawned item (interact): ",
+            ItemUtils.spawn(playerRef, commandBuffer, pos.clone().add(0, 1, 0), new ItemStack("Soil_Grass", 1))
+        );
         this.simulateInteractWithBlock(interactionType, interactionContext, heldItem, world, pos);
     }
 
@@ -69,13 +76,23 @@ public class TestAllInteraction extends SimpleBlockInteraction {
         @Nonnull World world,
         @Nonnull Vector3i pos
     ) {
-        Chat.log("INTERACT WITH: " + this.getClass().getName());
-        Chat.log("interactionType:    " + interactionType);
-        Chat.log("interactionContext: " + interactionContext);
-        Chat.log("heldItem:           " + heldItem);
-        Chat.log("world:              " + world);
-        Chat.log("pos:                " + pos);
-        Chat.log("");
+        var store = world.getEntityStore().getStore();
+        var player = store.getComponent(interactionContext.getOwningEntity(), Player.getComponentType());
+        if (player == null) {
+            throw new RuntimeException("Failed to get player!");
+        }
+        var playerRef = player.getReference();
+        if (playerRef == null) {
+            Chat.log("FAILED to get player ref!");
+            return;
+        }
+
+        world.execute(() -> {
+            Chat.log(
+                "Spawned item (simulation): ",
+                ItemUtils.spawn(playerRef, store, pos.add(0, 1, 0), new ItemStack("Soil_Grass", 1))
+            );
+        });
     }
 
     @Nonnull
