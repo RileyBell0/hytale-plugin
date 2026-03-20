@@ -9,9 +9,9 @@ import com.hypixel.hytale.component.RemoveReason;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
-import dev.twunk.component.IAutoBlockLifetimeComponent;
-import dev.twunk.utils.TwunkLib;
-import dev.twunk.utils.world.Utils;
+import dev.twunk.TwunkLib;
+import dev.twunk.interfaces.component.auto.IAutoBlockLifetimeComponent;
+import dev.twunk.utils.*;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -56,17 +56,17 @@ public class TestWorldChunkComponent implements IAutoBlockLifetimeComponent {
             console.log("");
             console.log("Added TEST_WorldChunk block");
         }
-        var worldChunk = Utils.Chunk.WorldChunk_.get(ref);
+        var worldChunk = ChunkUtils.WorldChunk_.get(ref);
         if (worldChunk == null) {
             console.log("ERROR: WORLD CHUNK WAS NULL IN SETUp");
             return;
         }
-        var coords = Utils.Block.Coords.Global.get(ref);
+        var coords = BlockUtils.Coords.Global.get(ref);
         if (coords == null) {
             console.log("ERROR: coords was null!!!");
             return;
         }
-        var res = Utils.Chunk.WorldChunk_.test(ref, worldChunk, commandBuffer, coords);
+        var res = ChunkUtils.WorldChunk_.test(ref, worldChunk, commandBuffer, coords);
 
         if (verbose != null) {
             console.log("Ran " + res.size() + " test(s)");

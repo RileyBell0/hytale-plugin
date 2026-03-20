@@ -9,9 +9,9 @@ import com.hypixel.hytale.component.RemoveReason;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
-import dev.twunk.component.IAutoBlockLifetimeComponent;
-import dev.twunk.utils.TwunkLib;
-import dev.twunk.utils.world.Utils;
+import dev.twunk.*;
+import dev.twunk.interfaces.component.auto.IAutoBlockLifetimeComponent;
+import dev.twunk.utils.*;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -57,17 +57,17 @@ public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
             console.log("");
             console.log("Added TEST_ChunkRef block");
         }
-        var worldChunk = Utils.Chunk.WorldChunk_.get(ref);
+        var worldChunk = ChunkUtils.WorldChunk_.get(ref);
         if (worldChunk == null) {
             console.log("ERROR: WORLD CHUNK WAS NULL IN SETUp");
             return;
         }
-        var coords = Utils.Block.Coords.Global.get(ref);
+        var coords = BlockUtils.Coords.Global.get(ref);
         if (coords == null) {
             console.log("ERROR: coords was null!!!");
             return;
         }
-        var res = Utils.Chunk.Ref_.test(ref, worldChunk, commandBuffer, coords);
+        var res = ChunkUtils.Ref_.test(ref, worldChunk, commandBuffer, coords);
 
         if (verbose != null) {
             console.log("Ran " + res.size() + " test(s)");
@@ -111,7 +111,7 @@ public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
         var allAreChunkRefs = true;
         for (var i = 0; i < res.size(); i++) {
             var curr = res.get(i);
-            if (curr == null || !curr.isValid() || !Utils.Block.isChunkRef(curr)) {
+            if (curr == null || !curr.isValid() || !BlockUtils.isChunkRef(curr)) {
                 allAreChunkRefs = false;
                 if (verbose != null && verbose) {
                     console.log("  - " + i + " is not a valid chunk ref!!!");
@@ -121,10 +121,10 @@ public class TestChunkRefComponent implements IAutoBlockLifetimeComponent {
                         console.log("    - not valid");
                     }
 
-                    if (curr != null && curr.isValid() && Utils.Block.isChunkRef(curr)) {
+                    if (curr != null && curr.isValid() && BlockUtils.isChunkRef(curr)) {
                         console.log("    + it is a chunk ref");
                     }
-                    if (curr != null && curr.isValid() && Utils.Block.isBlockRef(curr)) {
+                    if (curr != null && curr.isValid() && BlockUtils.isBlockRef(curr)) {
                         console.log("    - heck, its a block ref???");
                     }
                     console.log("    - " + curr);

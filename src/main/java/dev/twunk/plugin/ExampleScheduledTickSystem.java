@@ -45,7 +45,7 @@
 //         // if (!hasRun.containsKey(worldCoords)) {
 //         //     console.log("RUNNING FOR THE FIRST TIME");
 //         //     try {
-//         //         Utils.Block.Ref_.test(blockRef, wc, commandBuffer, worldCoords);
+//         //         Block.Ref_.test(blockRef, wc, commandBuffer, worldCoords);
 //         //         console.log(blockRef + "");
 //         //         console.log(wc + "");
 //         //         console.log(commandBuffer + "");
@@ -55,7 +55,7 @@
 //         //         console.log("Failed: " + e);
 //         //     }
 //         // }
-//         // var block = Utils.Block.Ref_.getRef(commandBuffer, worldCoords.x, worldCoords.y - 1, worldCoords.z);
+//         // var block = Block.Ref_.getRef(commandBuffer, worldCoords.x, worldCoords.y - 1, worldCoords.z);
 //         // if (block != null) {
 //         //     console.log("" + block);
 //         // }
@@ -74,17 +74,17 @@
 //         @Nonnull Store<ChunkStore> store,
 //         @Nonnull CommandBuffer<ChunkStore> commandBuffer
 //     ) {
-//         var worldChunk = Utils.Chunk.WorldChunk_.getWorldChunk(ref);
+//         var worldChunk = Chunk.WorldChunk_.getWorldChunk(ref);
 //         if (worldChunk == null) {
 //             console.log("ERROR: WORLD CHUNK WAS NULL IN SETUp");
 //             return;
 //         }
-//         var coords = Utils.Block.Coords.Global.getGlobalCoords(ref);
+//         var coords = Block.Coords.Global.getGlobalCoords(ref);
 //         if (coords == null) {
 //             console.log("ERROR: coords was null!!!");
 //             return;
 //         }
-//         Utils.Block.Ref_.test(ref, worldChunk, commandBuffer, coords);
+//         Block.Ref_.test(ref, worldChunk, commandBuffer, coords);
 //     }
 //     @Override
 //     public void onEntityRemove(

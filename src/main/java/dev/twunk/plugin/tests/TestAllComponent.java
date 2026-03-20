@@ -9,8 +9,8 @@ import com.hypixel.hytale.component.RemoveReason;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
-import dev.twunk.component.IAutoBlockLifetimeComponent;
-import dev.twunk.utils.TwunkLib;
+import dev.twunk.*;
+import dev.twunk.interfaces.component.auto.IAutoBlockLifetimeComponent;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 

@@ -9,9 +9,9 @@ import com.hypixel.hytale.component.RemoveReason;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
-import dev.twunk.component.IAutoBlockLifetimeComponent;
-import dev.twunk.utils.TwunkLib;
-import dev.twunk.utils.world.Utils;
+import dev.twunk.*;
+import dev.twunk.interfaces.component.auto.IAutoBlockLifetimeComponent;
+import dev.twunk.utils.*;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -58,20 +58,20 @@ public class TestChunkCoordsComponent implements IAutoBlockLifetimeComponent {
             console.log("Added TEST_ChunkCoords block");
         }
 
-        var worldChunk = Utils.Chunk.WorldChunk_.get(ref);
+        var worldChunk = ChunkUtils.WorldChunk_.get(ref);
         if (worldChunk == null) {
             console.log("ERROR: WORLD CHUNK WAS NULL IN SETUp");
             return;
         }
-        var coords = Utils.Block.Coords.Global.get(ref);
+        var coords = BlockUtils.Coords.Global.get(ref);
         if (coords == null) {
             console.log("ERROR: coords was null!!!");
             return;
         }
 
-        Utils.Chunk.Coords.Index.test(ref, worldChunk, commandBuffer, coords);
+        ChunkUtils.Coords.Index.test(ref, worldChunk, commandBuffer, coords);
         console.log("+ (11) SUCCESS: TEST_ChunkCoords-index");
-        Utils.Chunk.Coords.Global.test(ref, worldChunk, commandBuffer, coords);
+        ChunkUtils.Coords.Global.test(ref, worldChunk, commandBuffer, coords);
         console.log("+ (12) SUCCESS: TEST_ChunkCoords-global");
     }
 
