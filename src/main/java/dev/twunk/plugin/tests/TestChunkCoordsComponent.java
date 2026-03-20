@@ -63,15 +63,15 @@ public class TestChunkCoordsComponent implements IAutoBlockLifetimeComponent {
             console.log("ERROR: WORLD CHUNK WAS NULL IN SETUp");
             return;
         }
-        var coords = Utils.BlockCoords.Global.get(ref);
+        var coords = Utils.Block.Coords.Global.get(ref);
         if (coords == null) {
             console.log("ERROR: coords was null!!!");
             return;
         }
 
-        Utils.ChunkCoords.Index.test(ref, worldChunk, commandBuffer, coords);
+        Utils.Chunk.Coords.Index.test(ref, worldChunk, commandBuffer, coords);
         console.log("+ (11) SUCCESS: TEST_ChunkCoords-index");
-        Utils.ChunkCoords.Global.test(ref, worldChunk, commandBuffer, coords);
+        Utils.Chunk.Coords.Global.test(ref, worldChunk, commandBuffer, coords);
         console.log("+ (12) SUCCESS: TEST_ChunkCoords-global");
     }
 

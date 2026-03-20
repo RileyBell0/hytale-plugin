@@ -62,7 +62,7 @@ public class TestBlockIdComponent implements IAutoBlockLifetimeComponent {
             console.log("ERROR: WORLD CHUNK WAS NULL IN SETUp");
             return;
         }
-        var coords = Utils.BlockCoords.Global.get(ref);
+        var coords = Utils.Block.Coords.Global.get(ref);
         if (coords == null) {
             console.log("ERROR: coords was null!!!");
             return;
