@@ -24,17 +24,17 @@ public class Plugin extends ModPlugin {
     @Override
     protected void setup() {
         // Register components
-        this.registerComponent(TestBlockRefComponent.CODEC);
-        this.registerComponent(TestBlockInfoComponent.CODEC);
-        this.registerComponent(TestBlockIdComponent.CODEC);
-        this.registerComponent(TestBlockTypeComponent.CODEC);
-        this.registerComponent(TestBlockRefDetectionComponent.CODEC);
-        this.registerComponent(TestWorldChunkComponent.CODEC);
-        this.registerComponent(TestChunkRefComponent.CODEC);
-        this.registerComponent(TestComponent_Component.CODEC);
-        this.registerComponent(TestBlockCoordsComponent.CODEC);
-        this.registerComponent(TestChunkCoordsComponent.CODEC);
-        this.registerComponent(TestAllComponent.CODEC);
+        this.registerChunkComponent(TestBlockRefComponent.CODEC);
+        this.registerChunkComponent(TestBlockInfoComponent.CODEC);
+        this.registerChunkComponent(TestBlockIdComponent.CODEC);
+        this.registerChunkComponent(TestBlockTypeComponent.CODEC);
+        this.registerChunkComponent(TestBlockRefDetectionComponent.CODEC);
+        this.registerChunkComponent(TestWorldChunkComponent.CODEC);
+        this.registerChunkComponent(TestChunkRefComponent.CODEC);
+        this.registerChunkComponent(TestComponent_Component.CODEC);
+        this.registerChunkComponent(TestBlockCoordsComponent.CODEC);
+        this.registerChunkComponent(TestChunkCoordsComponent.CODEC);
+        this.registerChunkComponent(TestAllComponent.CODEC);
 
         // Register interactions
         this.registerInteraction(TestAllInteraction.CODEC);

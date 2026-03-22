@@ -36,7 +36,7 @@ public class TestWorldChunkComponent implements IAutoBlockLifetimeComponent {
     @Nonnull
     public static final ComponentType<ChunkStore, TestWorldChunkComponent> getComponentType() {
         if (COMPONENT_TYPE == null) {
-            COMPONENT_TYPE = TwunkLib.getComponentType(TestWorldChunkComponent.class);
+            COMPONENT_TYPE = TwunkLib.getChunkComponentType(TestWorldChunkComponent.class);
             return COMPONENT_TYPE;
         } else {
             return COMPONENT_TYPE;

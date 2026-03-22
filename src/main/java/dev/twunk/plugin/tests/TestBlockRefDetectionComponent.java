@@ -37,7 +37,7 @@ public class TestBlockRefDetectionComponent implements IAutoBlockLifetimeCompone
     @SuppressWarnings("null")
     public static final ComponentType<ChunkStore, TestBlockRefDetectionComponent> getComponentType() {
         if (COMPONENT_TYPE == null) {
-            COMPONENT_TYPE = TwunkLib.getComponentType(TestBlockRefDetectionComponent.class);
+            COMPONENT_TYPE = TwunkLib.getChunkComponentType(TestBlockRefDetectionComponent.class);
         }
 
         return COMPONENT_TYPE;
