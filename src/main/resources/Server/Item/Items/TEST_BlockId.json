@@ -5,6 +5,7 @@
   },
   "PlayerAnimationsId": "Block",
   "BlockType": {
+    "Material": "Solid",
     "Textures": [
       {
         "All": "BlockTextures/TEST_BlockId.png"

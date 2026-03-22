@@ -5,6 +5,8 @@
   },
   "PlayerAnimationsId": "Block",
   "BlockType": {
+    "$Comment": "The `Solid` material gives the block COLLISION",
+    "Material": "Solid",
     "Textures": [
       {
         "All": "BlockTextures/TEST_All.png"
