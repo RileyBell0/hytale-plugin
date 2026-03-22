@@ -4,11 +4,7 @@
     "Description": "items.TEST_BlockType.description"
   },
   "PlayerAnimationsId": "Block",
-  "MaxStack": 100,
   "BlockType": {
-    "Material": "Solid",
-    "DrawType": "Cube",
-    "Opacity": "Transparent",
     "Textures": [
       {
         "All": "BlockTextures/TEST_BlockType.png"
@@ -21,21 +17,6 @@
     },
     "Flags": {
       "IsUsable": true
-    },
-    "State": {
-      "Definitions": {
-        "CloseWindow": {
-          "InteractionSoundEventId": "SFX_Chest_Wooden_Close",
-          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Close.blockyanim"
-        },
-        "OpenWindow": {
-          "InteractionSoundEventId": "SFX_Chest_Wooden_Open",
-          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Open.blockyanim"
-        }
-      }
-    },
-    "Interactions": {
-      "Use": "Open_Container"
     }
   },
   "Icon": "Icons/ItemsGenerated/TEST_BlockType.png"

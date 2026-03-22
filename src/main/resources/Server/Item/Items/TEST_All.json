@@ -4,11 +4,7 @@
     "Description": "items.TEST_All.description"
   },
   "PlayerAnimationsId": "Block",
-  "MaxStack": 100,
   "BlockType": {
-    "Material": "Solid",
-    "DrawType": "Cube",
-    "Opacity": "Transparent",
     "Textures": [
       {
         "All": "BlockTextures/TEST_All.png"
@@ -16,24 +12,11 @@
     ],
     "BlockEntity": {
       "Components": {
-        "dev.twunk.plugin.tests.TestAllComponent": {},
-        "dev.twunk.components.ContainerComponent": {}
+        "dev.twunk.plugin.tests.TestAllComponent": {}
       }
     },
     "Flags": {
       "IsUsable": true
-    },
-    "State": {
-      "Definitions": {
-        "CloseWindow": {
-          "InteractionSoundEventId": "SFX_Chest_Wooden_Close",
-          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Close.blockyanim"
-        },
-        "OpenWindow": {
-          "InteractionSoundEventId": "SFX_Chest_Wooden_Open",
-          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Open.blockyanim"
-        }
-      }
     },
     "Interactions": {
       "Primary": {
@@ -55,13 +38,12 @@
         "Interactions": [
           {
             "Type": "Log",
-            "Message": "Use Interaction"
+            "Message": "Running TEST_All"
           },
-          { "Type": "OpenMahContainerPls" }
+          { "Type": "dev.twunk.plugin.tests.TestAllInteraction" }
         ]
       }
-    },
-    "$Comment": "{\n      \"Secondary\": {\n        \"Interactions\": [\n          { \"Type\": \"dev.twunk.plugin.tests.TestAllInteraction\" }\n        ]\n      },\n      \"Primary\": {\n        \"Interactions\": [\n          { \"Type\": \"dev.twunk.plugin.tests.TestAllInteraction\" }\n        ]\n      },\n      \"Ability1\": {\n        \"Interactions\": [\n          { \"Type\": \"dev.twunk.plugin.tests.TestAllInteraction\" }\n        ]\n      },\n      \"Ability2\": {\n        \"Interactions\": [\n          { \"Type\": \"dev.twunk.plugin.tests.TestAllInteraction\" }\n        ]\n      },\n      \"Ability3\": {\n        \"Interactions\": [\n          { \"Type\": \"dev.twunk.plugin.tests.TestAllInteraction\" }\n        ]\n      },\n      \"Pick\": {\n        \"Interactions\": [\n          { \"Type\": \"dev.twunk.plugin.tests.TestAllInteraction\" }\n        ]\n      },\n      \"Pickup\": {\n        \"Interactions\": [\n          { \"Type\": \"dev.twunk.plugin.tests.TestAllInteraction\" }\n        ]\n      },\n      \"Use\": {\n        \"Interactions\": [\n          { \"Type\": \"dev.twunk.plugin.tests.TestAllInteraction\" }\n        ]\n      }\n    }"
+    }
   },
   "Icon": "Icons/ItemsGenerated/TEST_All.png"
 }
