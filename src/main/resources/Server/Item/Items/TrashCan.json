@@ -1,0 +1,41 @@
+{
+  "TranslationProperties": {
+    "Name": "items.TrashCan.name",
+    "Description": "items.TrashCan.description"
+  },
+  "PlayerAnimationsId": "Block",
+  "MaxStack": 100,
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Cube",
+    "Opacity": "Transparent",
+    "Textures": [
+      {
+        "All": "BlockTextures/TrashCan.png"
+      }
+    ],
+    "BlockEntity": {
+      "Components": {
+        "dev.twunk.components.TrashComponent": {}
+      }
+    },
+    "Flags": {
+      "IsUsable": true
+    },
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "Log",
+            "Message": "Opening trash can"
+          },
+          {
+            "Type": "OpenMahContainerPls",
+            "ComponentId": "dev.twunk.components.TrashComponent"
+          }
+        ]
+      }
+    }
+  },
+  "Icon": "Icons/ItemsGenerated/TrashCan.png"
+}
