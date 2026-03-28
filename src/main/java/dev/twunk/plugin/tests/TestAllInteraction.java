@@ -13,9 +13,9 @@ import com.hypixel.hytale.server.core.modules.interaction.interaction.config.cli
 import com.hypixel.hytale.server.core.plugin.registry.CodecMapRegistry.Assets;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-import dev.twunk.plugin.ModPlugin;
-import dev.twunk.utils.ItemUtils;
-import dev.twunk.utils.message.Chat;
+import dev.twunk.hytale.HytalePlugin;
+import dev.twunk.hytale.utils.Chat;
+import dev.twunk.hytale.utils.ItemUtils;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -106,7 +106,7 @@ public class TestAllInteraction extends SimpleBlockInteraction {
         return TestAllInteraction.CODEC;
     }
 
-    protected Assets<Interaction, ?> registerToPlugin(@Nonnull final ModPlugin plugin) {
+    protected Assets<Interaction, ?> registerToPlugin(@Nonnull final HytalePlugin plugin) {
         return plugin.getCodecRegistry(Interaction.CODEC).register(this.getId(), this.getClass(), this.getCodec());
     }
 }

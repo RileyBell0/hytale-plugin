@@ -1,6 +1,7 @@
 package dev.twunk.plugin;
 
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
+import dev.twunk.hytale.HytalePlugin;
 import dev.twunk.plugin.tests.TestAllComponent;
 import dev.twunk.plugin.tests.TestAllInteraction;
 import dev.twunk.plugin.tests.TestBlockCoordsComponent;
@@ -15,7 +16,7 @@ import dev.twunk.plugin.tests.TestComponent_Component;
 import dev.twunk.plugin.tests.TestWorldChunkComponent;
 import javax.annotation.Nonnull;
 
-public class Plugin extends ModPlugin {
+public class Plugin extends HytalePlugin {
 
     public Plugin(@Nonnull JavaPluginInit init) {
         super(init);

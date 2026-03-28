@@ -8,14 +8,17 @@ import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.RemoveReason;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
-import dev.twunk.*;
-import dev.twunk.interfaces.component.auto.IAutoBlockLifetimeComponent;
-import dev.twunk.utils.*;
-import dev.twunk.utils.message.Chat;
+import dev.twunk.annotations.HytaleComponent;
+import dev.twunk.hytale.LibHytale;
+import dev.twunk.hytale.utils.BlockUtils;
+import dev.twunk.hytale.utils.Chat;
+import dev.twunk.hytale.utils.ChunkUtils;
+import dev.twunk.interfaces.component.ILifetimeComponent;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class TestBlockRefComponent implements IAutoBlockLifetimeComponent {
+@HytaleComponent
+public class TestBlockRefComponent implements ILifetimeComponent<ChunkStore> {
 
     @Nullable
     private static ComponentType<ChunkStore, TestBlockRefComponent> COMPONENT_TYPE;
@@ -36,7 +39,7 @@ public class TestBlockRefComponent implements IAutoBlockLifetimeComponent {
     @Nonnull
     public static final ComponentType<ChunkStore, TestBlockRefComponent> getComponentType() {
         if (COMPONENT_TYPE == null) {
-            COMPONENT_TYPE = TwunkLib.getChunkComponentType(TestBlockRefComponent.class);
+            COMPONENT_TYPE = LibHytale.getChunkComponentType(TestBlockRefComponent.class);
             return COMPONENT_TYPE;
         } else {
             return COMPONENT_TYPE;
