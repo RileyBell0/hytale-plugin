@@ -1,7 +1,7 @@
 {
   "TranslationProperties": {
-    "Name": "items.TrashCan.name",
-    "Description": "items.TrashCan.description"
+    "Name": "items.Container.name",
+    "Description": "items.Container.description"
   },
   "PlayerAnimationsId": "Block",
   "MaxStack": 100,
@@ -11,12 +11,12 @@
     "Opacity": "Transparent",
     "Textures": [
       {
-        "All": "BlockTextures/TrashCan.png"
+        "All": "BlockTextures/Container.png"
       }
     ],
     "BlockEntity": {
       "Components": {
-        "dev.twunk.hytale.component.TrashComponent": {}
+        "dev.twunk.hytale.component.ContainerComponent": {}
       }
     },
     "Flags": {
@@ -27,15 +27,15 @@
         "Interactions": [
           {
             "Type": "Log",
-            "Message": "Opening trash can"
+            "Message": "Opening CONTAINER"
           },
           {
             "Type": "OpenMahContainerPls",
-            "ComponentId": "dev.twunk.hytale.component.TrashComponent"
+            "ComponentId": "dev.twunk.hytale.component.ContainerComponent"
           }
         ]
       }
     }
   },
-  "Icon": "Icons/ItemsGenerated/TrashCan.png"
+  "Icon": "Icons/ItemsGenerated/Container.png"
 }
