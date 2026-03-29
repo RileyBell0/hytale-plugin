@@ -1,15 +1,11 @@
 package dev.twunk.plugin.tests;
 
-import com.hypixel.hytale.codec.builder.BuilderCodec;
 import com.hypixel.hytale.component.AddReason;
 import com.hypixel.hytale.component.CommandBuffer;
-import com.hypixel.hytale.component.ComponentType;
 import com.hypixel.hytale.component.Ref;
-import com.hypixel.hytale.component.RemoveReason;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
-import dev.twunk.annotations.HytaleComponent;
-import dev.twunk.hytale.LibHytale;
+import dev.twunk.annotations.Serializable;
 import dev.twunk.hytale.utils.BlockUtils;
 import dev.twunk.hytale.utils.Chat;
 import dev.twunk.hytale.utils.ChunkUtils;
@@ -17,34 +13,18 @@ import dev.twunk.interfaces.component.ILifetimeComponent;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-@HytaleComponent
+@Serializable
 public class TestChunkRefComponent implements ILifetimeComponent<ChunkStore> {
 
-    @Nullable
-    private static ComponentType<ChunkStore, TestChunkRefComponent> COMPONENT_TYPE;
-
-    @Nonnull
-    public static final BuilderCodec<TestChunkRefComponent> CODEC = BuilderCodec.builder(
-        TestChunkRefComponent.class,
-        TestChunkRefComponent::new
-    ).build();
-
-    public TestChunkRefComponent() {}
-
     @Override
-    @Nullable
-    public TestChunkRefComponent clone() {
-        return new TestChunkRefComponent();
-    }
-
-    @Nonnull
-    public static final ComponentType<ChunkStore, TestChunkRefComponent> getComponentType() {
-        if (COMPONENT_TYPE == null) {
-            COMPONENT_TYPE = LibHytale.getChunkComponentType(TestChunkRefComponent.class);
-            return COMPONENT_TYPE;
-        } else {
-            return COMPONENT_TYPE;
-        }
+    public void onEntityAdded(
+        @Nonnull Ref<ChunkStore> ref,
+        @Nonnull AddReason reason,
+        @Nonnull Store<ChunkStore> store,
+        @Nonnull CommandBuffer<ChunkStore> commandBuffer
+    ) {
+        final var verbose = false;
+        runTests(ref, reason, store, commandBuffer, verbose);
     }
 
     public static final void runTests(
@@ -153,21 +133,8 @@ public class TestChunkRefComponent implements ILifetimeComponent<ChunkStore> {
     }
 
     @Override
-    public void onEntityAdded(
-        @Nonnull Ref<ChunkStore> ref,
-        @Nonnull AddReason reason,
-        @Nonnull Store<ChunkStore> store,
-        @Nonnull CommandBuffer<ChunkStore> commandBuffer
-    ) {
-        final var verbose = false;
-        runTests(ref, reason, store, commandBuffer, verbose);
+    @Nullable
+    public TestChunkRefComponent clone() {
+        return new TestChunkRefComponent();
     }
-
-    @Override
-    public void onEntityRemove(
-        @Nonnull Ref<ChunkStore> ref,
-        @Nonnull RemoveReason reason,
-        @Nonnull Store<ChunkStore> store,
-        @Nonnull CommandBuffer<ChunkStore> commandBuffer
-    ) {}
 }

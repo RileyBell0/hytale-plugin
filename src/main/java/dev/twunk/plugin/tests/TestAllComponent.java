@@ -1,49 +1,18 @@
 package dev.twunk.plugin.tests;
 
-import com.hypixel.hytale.codec.builder.BuilderCodec;
 import com.hypixel.hytale.component.AddReason;
 import com.hypixel.hytale.component.CommandBuffer;
-import com.hypixel.hytale.component.ComponentType;
 import com.hypixel.hytale.component.Ref;
-import com.hypixel.hytale.component.RemoveReason;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
-import dev.twunk.annotations.HytaleComponent;
-import dev.twunk.hytale.LibHytale;
+import dev.twunk.annotations.Serializable;
 import dev.twunk.hytale.utils.Chat;
 import dev.twunk.interfaces.component.ILifetimeComponent;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-@HytaleComponent
+@Serializable
 public class TestAllComponent implements ILifetimeComponent<ChunkStore> {
-
-    @Nullable
-    private static ComponentType<ChunkStore, TestAllComponent> COMPONENT_TYPE;
-
-    @Nonnull
-    public static final BuilderCodec<TestAllComponent> CODEC = BuilderCodec.builder(
-        TestAllComponent.class,
-        TestAllComponent::new
-    ).build();
-
-    public TestAllComponent() {}
-
-    @Override
-    @Nullable
-    public TestAllComponent clone() {
-        return new TestAllComponent();
-    }
-
-    @Nonnull
-    public static final ComponentType<ChunkStore, TestAllComponent> getComponentType() {
-        if (COMPONENT_TYPE == null) {
-            COMPONENT_TYPE = LibHytale.getChunkComponentType(TestAllComponent.class);
-            return COMPONENT_TYPE;
-        } else {
-            return COMPONENT_TYPE;
-        }
-    }
 
     @Override
     public void onEntityAdded(
@@ -69,10 +38,8 @@ public class TestAllComponent implements ILifetimeComponent<ChunkStore> {
     }
 
     @Override
-    public void onEntityRemove(
-        @Nonnull Ref<ChunkStore> ref,
-        @Nonnull RemoveReason reason,
-        @Nonnull Store<ChunkStore> store,
-        @Nonnull CommandBuffer<ChunkStore> commandBuffer
-    ) {}
+    @Nullable
+    public TestAllComponent clone() {
+        return new TestAllComponent();
+    }
 }
