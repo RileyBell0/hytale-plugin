@@ -18,6 +18,26 @@
     },
     "Flags": {
       "IsUsable": true
+    },
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "Log",
+            "Message": "INTERACTING WITH BLOCK"
+          },
+          {
+            "Type": "SpawnItem",
+            "Quantity": 1,
+            "At": {
+              "X": -310,
+              "Y": 130,
+              "Z": -90
+            }
+          },
+          { "Type": "SpawnItem", "Quantity": 2 }
+        ]
+      }
     }
   },
   "Icon": "Icons/ItemsGenerated/TEST_BlockRef.png"

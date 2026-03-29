@@ -31,7 +31,7 @@
           },
           {
             "Type": "OpenMahContainerPls",
-            "ComponentId": "dev.twunk.hytale.component.ContainerComponent"
+            "ComponentType": "dev.twunk.hytale.component.ContainerComponent"
           }
         ]
       }
