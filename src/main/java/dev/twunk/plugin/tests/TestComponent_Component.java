@@ -6,6 +6,7 @@ import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
 import dev.twunk.annotations.Serializable;
+import dev.twunk.hytale.refs.AnyRef;
 import dev.twunk.hytale.utils.BlockUtils;
 import dev.twunk.hytale.utils.Chat;
 import dev.twunk.hytale.utils.ChunkUtils;
@@ -19,12 +20,11 @@ public class TestComponent_Component implements ILifetimeComponent<ChunkStore> {
 
     @Override
     public void onEntityAdded(
-        @Nonnull Ref<ChunkStore> ref,
+        @Nonnull AnyRef<ChunkStore> ref,
         @Nonnull AddReason reason,
-        @Nonnull Store<ChunkStore> store,
         @Nonnull CommandBuffer<ChunkStore> commandBuffer
     ) {
-        runTests(ref, reason, store, commandBuffer, false);
+        runTests(ref, reason, ref.getStore(), commandBuffer, false);
     }
 
     public static final void runTests(

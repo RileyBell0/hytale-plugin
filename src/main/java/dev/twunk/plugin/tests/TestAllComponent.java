@@ -2,10 +2,9 @@ package dev.twunk.plugin.tests;
 
 import com.hypixel.hytale.component.AddReason;
 import com.hypixel.hytale.component.CommandBuffer;
-import com.hypixel.hytale.component.Ref;
-import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
 import dev.twunk.annotations.Serializable;
+import dev.twunk.hytale.refs.AnyRef;
 import dev.twunk.hytale.utils.Chat;
 import dev.twunk.interfaces.component.ILifetimeComponent;
 import javax.annotation.Nonnull;
@@ -16,14 +15,14 @@ public class TestAllComponent implements ILifetimeComponent<ChunkStore> {
 
     @Override
     public void onEntityAdded(
-        @Nonnull Ref<ChunkStore> ref,
+        @Nonnull AnyRef<ChunkStore> ref,
         @Nonnull AddReason reason,
-        @Nonnull Store<ChunkStore> store,
         @Nonnull CommandBuffer<ChunkStore> commandBuffer
     ) {
         final Boolean verbose = null;
         Chat.log("");
         Chat.log("Added TEST_All block");
+        var store = ref.getStore();
 
         TestBlockIdComponent.runTests(ref, reason, store, commandBuffer, verbose, "TEST_All");
         TestBlockInfoComponent.runTests(ref, reason, store, commandBuffer, verbose);
