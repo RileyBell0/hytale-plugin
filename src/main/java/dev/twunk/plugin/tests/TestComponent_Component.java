@@ -12,27 +12,22 @@ import dev.twunk.hytale.utils.Chat;
 import dev.twunk.hytale.utils.ChunkUtils;
 import dev.twunk.hytale.utils.ComponentUtils;
 import dev.twunk.interfaces.component.ILifetimeComponent;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 @Serializable
 public class TestComponent_Component implements ILifetimeComponent<ChunkStore> {
 
     @Override
-    public void onEntityAdded(
-        @Nonnull AnyRef<ChunkStore> ref,
-        @Nonnull AddReason reason,
-        @Nonnull CommandBuffer<ChunkStore> commandBuffer
-    ) {
+    public void onEntityAdded(AnyRef<ChunkStore> ref, AddReason reason, CommandBuffer<ChunkStore> commandBuffer) {
         runTests(ref, reason, ref.getStore(), commandBuffer, false);
     }
 
     public static final void runTests(
-        @Nonnull Ref<ChunkStore> ref,
-        @Nonnull AddReason reason,
-        @Nonnull Store<ChunkStore> store,
-        @Nonnull CommandBuffer<ChunkStore> commandBuffer,
-        Boolean verbose
+        Ref<ChunkStore> ref,
+        AddReason reason,
+        Store<ChunkStore> store,
+        CommandBuffer<ChunkStore> commandBuffer,
+        @Nullable Boolean verbose
     ) {
         if (verbose != null) {
             Chat.log("");
@@ -51,7 +46,7 @@ public class TestComponent_Component implements ILifetimeComponent<ChunkStore> {
         ComponentUtils.test(ref, worldChunk, commandBuffer, coords, verbose);
     }
 
-    @Nullable
+    @Override
     public TestComponent_Component clone() {
         return new TestComponent_Component();
     }

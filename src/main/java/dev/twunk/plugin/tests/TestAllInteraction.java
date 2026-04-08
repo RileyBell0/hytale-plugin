@@ -13,7 +13,6 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import dev.twunk.annotations.Serializable;
 import dev.twunk.hytale.utils.Chat;
 import dev.twunk.hytale.utils.ItemUtils;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 @Serializable(inherits = SimpleBlockInteraction.class)
@@ -21,24 +20,24 @@ public class TestAllInteraction extends SimpleBlockInteraction {
 
     @Override
     protected void interactWithBlock(
-        @Nonnull World world,
-        @Nonnull CommandBuffer<EntityStore> commandBuffer,
-        @Nonnull InteractionType interactionType,
-        @Nonnull InteractionContext interactionContext,
+        World world,
+        CommandBuffer<EntityStore> commandBuffer,
+        InteractionType interactionType,
+        InteractionContext interactionContext,
         @Nullable ItemStack heldItem,
-        @Nonnull Vector3i pos,
-        @Nonnull CooldownHandler cooldownHandler
+        Vector3i pos,
+        CooldownHandler cooldownHandler
     ) {
         this.simulateInteractWithBlock(interactionType, interactionContext, heldItem, world, pos);
     }
 
     @Override
     protected void simulateInteractWithBlock(
-        @Nonnull InteractionType interactionType,
-        @Nonnull InteractionContext interactionContext,
+        InteractionType interactionType,
+        InteractionContext interactionContext,
         @Nullable ItemStack heldItem,
-        @Nonnull World world,
-        @Nonnull Vector3i pos
+        World world,
+        Vector3i pos
     ) {
         var store = world.getEntityStore().getStore();
         var player = store.getComponent(interactionContext.getOwningEntity(), Player.getComponentType());

@@ -7,18 +7,12 @@ import dev.twunk.annotations.Serializable;
 import dev.twunk.hytale.refs.AnyRef;
 import dev.twunk.hytale.utils.Chat;
 import dev.twunk.interfaces.component.ILifetimeComponent;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 @Serializable
 public class TestAllComponent implements ILifetimeComponent<ChunkStore> {
 
     @Override
-    public void onEntityAdded(
-        @Nonnull AnyRef<ChunkStore> ref,
-        @Nonnull AddReason reason,
-        @Nonnull CommandBuffer<ChunkStore> commandBuffer
-    ) {
+    public void onEntityAdded(AnyRef<ChunkStore> ref, AddReason reason, CommandBuffer<ChunkStore> commandBuffer) {
         final Boolean verbose = null;
         Chat.log("");
         Chat.log("Added TEST_All block");
@@ -37,7 +31,6 @@ public class TestAllComponent implements ILifetimeComponent<ChunkStore> {
     }
 
     @Override
-    @Nullable
     public TestAllComponent clone() {
         return new TestAllComponent();
     }

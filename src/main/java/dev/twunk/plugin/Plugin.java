@@ -14,11 +14,10 @@ import dev.twunk.plugin.tests.TestChunkCoordsComponent;
 import dev.twunk.plugin.tests.TestChunkRefComponent;
 import dev.twunk.plugin.tests.TestComponent_Component;
 import dev.twunk.plugin.tests.TestWorldChunkComponent;
-import javax.annotation.Nonnull;
 
 public class Plugin extends HytalePlugin {
 
-    public Plugin(@Nonnull JavaPluginInit init) {
+    public Plugin(JavaPluginInit init) {
         super(init);
     }
 
