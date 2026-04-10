@@ -40,7 +40,13 @@
         "Interactions": [
           {
             "Type": "Log",
-            "Message": "Running TEST_All"
+            "Message": "Running TEST_All",
+            "Messages": [
+              {
+                "Message": " hi",
+                "Color": "#00FF00"
+              }
+            ]
           },
           { "Type": "dev.twunk.plugin.tests.TestAllInteraction" }
         ]
