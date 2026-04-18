@@ -24,20 +24,20 @@ public class Plugin extends HytalePlugin {
     @Override
     protected void setup() {
         // Register components
-        this.registerChunkComponent(TestBlockRefComponent.class);
-        this.registerChunkComponent(TestBlockInfoComponent.class);
-        this.registerChunkComponent(TestBlockIdComponent.class);
-        this.registerChunkComponent(TestBlockTypeComponent.class);
-        this.registerChunkComponent(TestBlockRefDetectionComponent.class);
-        this.registerChunkComponent(TestWorldChunkComponent.class);
-        this.registerChunkComponent(TestChunkRefComponent.class);
-        this.registerChunkComponent(TestComponent_Component.class);
-        this.registerChunkComponent(TestBlockCoordsComponent.class);
-        this.registerChunkComponent(TestChunkCoordsComponent.class);
-        this.registerChunkComponent(TestAllComponent.class);
+        this.register(TestBlockRefComponent.class);
+        this.register(TestBlockInfoComponent.class);
+        this.register(TestBlockIdComponent.class);
+        this.register(TestBlockTypeComponent.class);
+        this.register(TestBlockRefDetectionComponent.class);
+        this.register(TestWorldChunkComponent.class);
+        this.register(TestChunkRefComponent.class);
+        this.register(TestComponent_Component.class);
+        this.register(TestBlockCoordsComponent.class);
+        this.register(TestChunkCoordsComponent.class);
+        this.register(TestAllComponent.class);
 
         // Register interactions
-        this.registerInteraction(TestAllInteraction.class);
+        this.register(TestAllInteraction.class);
 
         // Register systems
         // new ExampleScheduledTickSystem("RileysExampleSystemID").registerTo(this);
