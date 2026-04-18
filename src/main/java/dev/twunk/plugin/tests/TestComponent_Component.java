@@ -2,6 +2,7 @@ package dev.twunk.plugin.tests;
 
 import com.hypixel.hytale.component.AddReason;
 import com.hypixel.hytale.component.CommandBuffer;
+import com.hypixel.hytale.component.Component;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
@@ -11,11 +12,11 @@ import dev.twunk.hytale.utils.BlockUtils;
 import dev.twunk.hytale.utils.Chat;
 import dev.twunk.hytale.utils.ChunkUtils;
 import dev.twunk.hytale.utils.ComponentUtils;
-import dev.twunk.interfaces.component.ILifetimeComponent;
+import dev.twunk.interfaces.events.IOnAddRemove;
 import javax.annotation.Nullable;
 
 @Serializable
-public class TestComponent_Component implements ILifetimeComponent<ChunkStore> {
+public class TestComponent_Component implements Component<ChunkStore>, IOnAddRemove<ChunkStore> {
 
     @Override
     public void onEntityAdded(AnyRef<ChunkStore> ref, AddReason reason, CommandBuffer<ChunkStore> commandBuffer) {
