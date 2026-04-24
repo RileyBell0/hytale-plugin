@@ -10,7 +10,7 @@ import com.hypixel.hytale.server.core.modules.interaction.interaction.CooldownHa
 import com.hypixel.hytale.server.core.modules.interaction.interaction.config.client.SimpleBlockInteraction;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-import dev.twunk.annotations.Serializable;
+import dev.twunk.hytale.codec.auto.Serializable;
 import dev.twunk.hytale.utils.Chat;
 import dev.twunk.hytale.utils.ItemUtils;
 import javax.annotation.Nullable;
