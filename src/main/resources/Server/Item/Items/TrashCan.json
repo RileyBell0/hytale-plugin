@@ -16,7 +16,7 @@
     ],
     "BlockEntity": {
       "Components": {
-        "dev.twunk.hytale.component.TrashComponent": {}
+        "dev.twunk.examples.component.TrashComponent": {}
       }
     },
     "Flags": {
@@ -31,7 +31,7 @@
           },
           {
             "Type": "OpenMahContainerPls",
-            "ComponentType": "dev.twunk.hytale.component.TrashComponent"
+            "ComponentType": "dev.twunk.examples.component.TrashComponent"
           }
         ]
       }

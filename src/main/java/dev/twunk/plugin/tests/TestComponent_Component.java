@@ -4,7 +4,6 @@ import com.hypixel.hytale.component.AddReason;
 import com.hypixel.hytale.component.CommandBuffer;
 import com.hypixel.hytale.component.Component;
 import com.hypixel.hytale.component.Ref;
-import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
 import dev.twunk.hytale.codec.auto.Serializable;
 import dev.twunk.hytale.interfaces.event.IOnAddRemove;
@@ -20,13 +19,11 @@ public class TestComponent_Component implements Component<ChunkStore>, IOnAddRem
 
     @Override
     public void onEntityAdded(AnyRef<ChunkStore> ref, AddReason reason, CommandBuffer<ChunkStore> commandBuffer) {
-        runTests(ref, reason, ref.getStore(), commandBuffer, false);
+        runTests(ref, commandBuffer, false);
     }
 
     public static final void runTests(
         Ref<ChunkStore> ref,
-        AddReason reason,
-        Store<ChunkStore> store,
         CommandBuffer<ChunkStore> commandBuffer,
         @Nullable Boolean verbose
     ) {
@@ -34,7 +31,7 @@ public class TestComponent_Component implements Component<ChunkStore>, IOnAddRem
             Chat.log("");
             Chat.log("Added TEST_Component_ block");
         }
-        var worldChunk = ChunkUtils.WorldChunk_.get(ref);
+        var worldChunk = ChunkUtils.WorldChunks.get(ref);
         if (worldChunk == null) {
             Chat.log("ERROR: WORLD CHUNK WAS NULL IN SETUp");
             return;
@@ -44,7 +41,7 @@ public class TestComponent_Component implements Component<ChunkStore>, IOnAddRem
             Chat.log("ERROR: coords was null!!!");
             return;
         }
-        ComponentUtils.test(ref, worldChunk, commandBuffer, coords, verbose);
+        ComponentUtils.test(ref, commandBuffer, coords, verbose);
     }
 
     @Override

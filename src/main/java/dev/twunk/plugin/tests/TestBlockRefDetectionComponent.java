@@ -4,7 +4,6 @@ import com.hypixel.hytale.component.AddReason;
 import com.hypixel.hytale.component.CommandBuffer;
 import com.hypixel.hytale.component.Component;
 import com.hypixel.hytale.component.Ref;
-import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
 import dev.twunk.hytale.codec.auto.Serializable;
 import dev.twunk.hytale.interfaces.event.IOnAddRemove;
@@ -20,21 +19,15 @@ public class TestBlockRefDetectionComponent implements Component<ChunkStore>, IO
     @Override
     public void onEntityAdded(AnyRef<ChunkStore> ref, AddReason reason, CommandBuffer<ChunkStore> commandBuffer) {
         final var verbose = false;
-        runTests(ref, reason, ref.getStore(), commandBuffer, verbose);
+        runTests(ref, verbose);
     }
 
-    public static final void runTests(
-        Ref<ChunkStore> ref,
-        AddReason reason,
-        Store<ChunkStore> store,
-        CommandBuffer<ChunkStore> commandBuffer,
-        @Nullable Boolean verbose
-    ) {
+    public static final void runTests(Ref<ChunkStore> ref, @Nullable Boolean verbose) {
         if (verbose != null) {
             Chat.log("");
             Chat.log("Added TEST_BlockRefDetection block");
         }
-        var worldChunk = ChunkUtils.WorldChunk_.get(ref);
+        var worldChunk = ChunkUtils.WorldChunks.get(ref);
         if (worldChunk == null) {
             Chat.log("ERROR: WORLD CHUNK WAS NULL IN SETUp");
             return;
@@ -55,7 +48,7 @@ public class TestBlockRefDetectionComponent implements Component<ChunkStore>, IO
             final var test = res.get(i);
 
             // every 2nd test for this one are meant to be "true"
-            if (test == (i % 2 == 0)) {
+            if (Boolean.TRUE.equals(test) == (i % 2 == 0)) {
                 success += 1;
             }
             if (verbose != null && verbose) {

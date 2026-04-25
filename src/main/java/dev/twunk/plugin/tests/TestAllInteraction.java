@@ -50,11 +50,11 @@ public class TestAllInteraction extends SimpleBlockInteraction {
             return;
         }
 
-        world.execute(() -> {
+        world.execute(() ->
             Chat.log(
                 "Spawned item (simulation): ",
                 ItemUtils.spawn(playerRef, store, pos.toVector3d().add(0, 1, 0), new ItemStack("Soil_Grass", 1))
-            );
-        });
+            )
+        );
     }
 }
