@@ -21,3 +21,6 @@ TEST_Component_.description = TEST_Component_
 
 TEST_All.name = TEST_Component_
 TEST_All.description = TEST_Component_
+
+EventTest.name = TEST - EventTestBlock
+EventTest.description = A block that will spit out tons of messages into the server console for validating that the events ive got all work

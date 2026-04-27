@@ -2,6 +2,7 @@ package dev.twunk.plugin;
 
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import dev.twunk.hytale.HytalePlugin;
+import dev.twunk.plugin.tests.EventTestComponent;
 import dev.twunk.plugin.tests.TestAllComponent;
 import dev.twunk.plugin.tests.TestAllInteraction;
 import dev.twunk.plugin.tests.TestBlockCoordsComponent;
@@ -23,7 +24,7 @@ public class Plugin extends HytalePlugin {
 
     @Override
     protected void setup() {
-        // Register components
+        // TEST components
         this.register(TestBlockRefComponent.class);
         this.register(TestBlockInfoComponent.class);
         this.register(TestBlockIdComponent.class);
@@ -36,10 +37,10 @@ public class Plugin extends HytalePlugin {
         this.register(TestChunkCoordsComponent.class);
         this.register(TestAllComponent.class);
 
+        // Other components
+        this.register(EventTestComponent.class);
+
         // Register interactions
         this.register(TestAllInteraction.class);
-
-        // Register systems
-        // new ExampleScheduledTickSystem("RileysExampleSystemID").registerTo(this);
     }
 }

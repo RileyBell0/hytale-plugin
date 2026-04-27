@@ -1,0 +1,22 @@
+{
+  "TranslationProperties": {
+    "Name": "items.EventTest.name",
+    "Description": "items.EventTest.description"
+  },
+  "PlayerAnimationsId": "Block",
+  "BlockType": {
+    "$Comment": "The `Solid` material gives the block COLLISION",
+    "Material": "Solid",
+    "Textures": [
+      {
+        "All": "BlockTextures/EventTest.png"
+      }
+    ],
+    "BlockEntity": {
+      "Components": {
+        "dev.twunk.plugin.tests.EventTestComponent": {}
+      }
+    }
+  },
+  "Icon": "Icons/ItemsGenerated/EventTest.png"
+}
