@@ -1,1 +1,1 @@
-rootProject.name = "libtwunk"
+rootProject.name = "hytale-plugin"

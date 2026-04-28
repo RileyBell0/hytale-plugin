@@ -5,4 +5,4 @@
 cp -r build/libs/* libs/mods/
 
 cd libs
-./run
+./run $@
