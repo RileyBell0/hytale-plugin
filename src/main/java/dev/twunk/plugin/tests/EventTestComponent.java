@@ -8,6 +8,7 @@ import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.RemoveReason;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.logger.HytaleLogger;
+import com.hypixel.hytale.server.core.modules.interaction.BlockHarvestUtils;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
 import dev.twunk.hytale.LibHytale;
 import dev.twunk.hytale.codec.auto.Serializable;
@@ -27,63 +28,59 @@ import javax.annotation.Nullable;
 public final class EventTestComponent
     implements
         Component<ChunkStore>,
-        IOnAddRemove<ChunkStore>,
-        IOnBlockTick,
-        IOnTick<ChunkStore>,
-        IOnUniverseTick<ChunkStore>,
+        // IOnAddRemove<ChunkStore>,
+        // IOnBlockTick,
+        // IOnTick<ChunkStore>,
+        // IOnUniverseTick<ChunkStore>,
         IOnScheduledTick<ChunkStore>
 {
 
     public static final HytaleLogger logger = HytaleLogger.forEnclosingClass();
 
-    private static int nextId = 0;
-
-    private int id = nextId++;
-
     // ////////////////////////////////
     // IOnAddRemove
     // ////////////////////////////////
 
-    @Override
-    public final void onEntityAdded(AnyRef<ChunkStore> ref, AddReason reason, CommandBuffer<ChunkStore> commandBuffer) {
-        logger.atWarning().log(id + ") onEntityAdded | " + reason);
-    }
+    // @Override
+    // public final void onEntityAdded(AnyRef<ChunkStore> ref, AddReason reason, CommandBuffer<ChunkStore> commandBuffer) {
+    //     // logger.atWarning().log(id + ") onEntityAdded | " + reason);
+    // }
 
-    @Override
-    public final void onEntityRemove(
-        AnyRef<ChunkStore> ref,
-        RemoveReason reason,
-        CommandBuffer<ChunkStore> commandBuffer
-    ) {
-        logger.atWarning().log(id + ") onEntityRemove | " + reason);
-    }
+    // @Override
+    // public final void onEntityRemove(
+    //     AnyRef<ChunkStore> ref,
+    //     RemoveReason reason,
+    //     CommandBuffer<ChunkStore> commandBuffer
+    // ) {
+    //     logger.atWarning().log(id + ") onEntityRemove | " + reason);
+    // }
 
-    // ////////////////////////////////
-    // IOnBlockTick
-    // ////////////////////////////////
+    // // ////////////////////////////////
+    // // IOnBlockTick
+    // // ////////////////////////////////
 
-    @Override
-    public final void onBlockTick(BlockRef blockRef, CommandBuffer<ChunkStore> commandBuffer) {
-        logger.atWarning().log(id + ") onBlockTick | " + blockRef.getCoords());
-    }
+    // @Override
+    // public final void onBlockTick(BlockRef blockRef, CommandBuffer<ChunkStore> commandBuffer) {
+    //     // logger.atWarning().log(id + ") onBlockTick | " + blockRef.getCoords());
+    // }
 
     // ////////////////////////////////
     // IOnTick
     // ////////////////////////////////
 
-    @Override
-    public final void onTick(float dt, AnyRef<ChunkStore> ref, CommandBuffer<ChunkStore> commandBuffer) {
-        logger.atWarning().log(id + ") onTick");
-    }
+    // @Override
+    // public final void onTick(float dt, AnyRef<ChunkStore> ref, CommandBuffer<ChunkStore> commandBuffer) {
+    //     // logger.atWarning().log(id + ") onTick");
+    // }
 
     // ////////////////////////////////
     // IOnUniverseTick
     // ////////////////////////////////
 
-    @Override
-    public final void onUniverseTick(float dt, int index, Store<ChunkStore> store) {
-        logger.atWarning().log(id + ") onUniverseTick");
-    }
+    // @Override
+    // public final void onUniverseTick(float dt, int index, Store<ChunkStore> store) {
+    //     // logger.atWarning().log(id + ") onUniverseTick");
+    // }
 
     // ////////////////////////////////
     // IOnScheduledTick
@@ -106,21 +103,20 @@ public final class EventTestComponent
     @Override
     @Nullable
     public final TickSchedule onScheduledTick(float dt, Ref<ChunkStore> ref, CommandBuffer<ChunkStore> commandBuffer) {
-        logger.atWarning().log(id + ") onScheduledTick");
+        logger.atWarning().log(ref.getStore().getExternalData().getWorld().getTick() + ") onScheduledTick");
 
-        var worldChunk = ChunkUtils.WorldChunks.get(ref);
-        if (worldChunk != null) {
-            worldChunk.markNeedsSaving();
-        }
+        // var worldChunk = ChunkUtils.WorldChunks.get(ref);
+        // if (worldChunk != null) {
+        //     worldChunk.markNeedsSaving();
+        // }
 
-        return new TickSchedule.Sleeping(ref.getStore().getExternalData().getWorld().getTick() + 2);
+        return new TickSchedule.Sleeping(ref.getStore().getExternalData().getWorld().getTick() + 120);
     }
 
     @Override
     public EventTestComponent clone() {
         var cloned = new EventTestComponent();
         cloned.tick = this.tick;
-        cloned.id = this.id;
         return cloned;
     }
 }

@@ -2,16 +2,11 @@ plugins {
     id("java")
     id("com.gradleup.shadow") version "9.4.0"
     id("eclipse")
-    id("application")
 }
 
 group = "dev.twunk"
 version = "0.1.0"
 
-application {
-    mainClass = "com.hypixel.hytale.Main"
-    mainModule = "com.hypixel.hytale"
-}
 
 repositories {
     mavenCentral()
