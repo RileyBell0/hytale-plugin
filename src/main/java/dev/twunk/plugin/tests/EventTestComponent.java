@@ -102,15 +102,20 @@ public final class EventTestComponent
 
     @Override
     @Nullable
-    public final TickSchedule onScheduledTick(float dt, Ref<ChunkStore> ref, CommandBuffer<ChunkStore> commandBuffer) {
-        logger.atWarning().log(ref.getStore().getExternalData().getWorld().getTick() + ") onScheduledTick");
+    public final TickSchedule onScheduledTick(
+        float dt,
+        long worldTick,
+        Ref<ChunkStore> ref,
+        CommandBuffer<ChunkStore> commandBuffer
+    ) {
+        logger.atWarning().log("onScheduledTick | " + ref);
 
         // var worldChunk = ChunkUtils.WorldChunks.get(ref);
         // if (worldChunk != null) {
         //     worldChunk.markNeedsSaving();
         // }
 
-        return new TickSchedule.Sleeping(ref.getStore().getExternalData().getWorld().getTick() + 120);
+        return new TickSchedule.Sleeping(600);
     }
 
     @Override
