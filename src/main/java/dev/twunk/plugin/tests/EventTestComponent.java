@@ -1,14 +1,13 @@
 package dev.twunk.plugin.tests;
 
 import com.hypixel.hytale.component.AddReason;
+import com.hypixel.hytale.component.ArchetypeChunk;
 import com.hypixel.hytale.component.CommandBuffer;
 import com.hypixel.hytale.component.Component;
 import com.hypixel.hytale.component.ComponentType;
-import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.RemoveReason;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.logger.HytaleLogger;
-import com.hypixel.hytale.server.core.modules.interaction.BlockHarvestUtils;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
 import dev.twunk.hytale.LibHytale;
 import dev.twunk.hytale.codec.auto.Serializable;
@@ -18,9 +17,9 @@ import dev.twunk.hytale.interfaces.event.IOnBlockTick;
 import dev.twunk.hytale.interfaces.event.IOnScheduledTick;
 import dev.twunk.hytale.interfaces.event.IOnTick;
 import dev.twunk.hytale.interfaces.event.IOnUniverseTick;
+import dev.twunk.hytale.interfaces.event.IOnWorldTick;
 import dev.twunk.hytale.ref.AnyRef;
 import dev.twunk.hytale.ref.BlockRef;
-import dev.twunk.hytale.utils.ChunkUtils;
 import dev.twunk.lib.event.scheduled.TickSchedule;
 import javax.annotation.Nullable;
 
@@ -28,10 +27,11 @@ import javax.annotation.Nullable;
 public final class EventTestComponent
     implements
         Component<ChunkStore>,
-        // IOnAddRemove<ChunkStore>,
-        // IOnBlockTick,
-        // IOnTick<ChunkStore>,
-        // IOnUniverseTick<ChunkStore>,
+        IOnAddRemove<ChunkStore>,
+        IOnBlockTick,
+        IOnTick<ChunkStore>,
+        IOnUniverseTick<ChunkStore>,
+        IOnWorldTick<ChunkStore>,
         IOnScheduledTick<ChunkStore>
 {
 
@@ -41,46 +41,56 @@ public final class EventTestComponent
     // IOnAddRemove
     // ////////////////////////////////
 
-    // @Override
-    // public final void onEntityAdded(AnyRef<ChunkStore> ref, AddReason reason, CommandBuffer<ChunkStore> commandBuffer) {
-    //     // logger.atWarning().log(id + ") onEntityAdded | " + reason);
-    // }
+    @Override
+    public final void onAdd(AnyRef<ChunkStore> ref, AddReason reason, CommandBuffer<ChunkStore> commandBuffer) {
+        logger.atWarning().log("onEntityAdded | " + reason);
+    }
 
-    // @Override
-    // public final void onEntityRemove(
-    //     AnyRef<ChunkStore> ref,
-    //     RemoveReason reason,
-    //     CommandBuffer<ChunkStore> commandBuffer
-    // ) {
-    //     logger.atWarning().log(id + ") onEntityRemove | " + reason);
-    // }
+    @Override
+    public final void onRemove(AnyRef<ChunkStore> ref, RemoveReason reason, CommandBuffer<ChunkStore> commandBuffer) {
+        logger.atWarning().log("onEntityRemove | " + reason);
+    }
 
     // // ////////////////////////////////
     // // IOnBlockTick
     // // ////////////////////////////////
 
-    // @Override
-    // public final void onBlockTick(BlockRef blockRef, CommandBuffer<ChunkStore> commandBuffer) {
-    //     // logger.atWarning().log(id + ") onBlockTick | " + blockRef.getCoords());
-    // }
+    @Override
+    public final void onBlockTick(BlockRef blockRef, CommandBuffer<ChunkStore> commandBuffer) {
+        logger.atWarning().log("onBlockTick | " + blockRef.getCoords());
+    }
 
     // ////////////////////////////////
     // IOnTick
     // ////////////////////////////////
 
-    // @Override
-    // public final void onTick(float dt, AnyRef<ChunkStore> ref, CommandBuffer<ChunkStore> commandBuffer) {
-    //     // logger.atWarning().log(id + ") onTick");
-    // }
+    @Override
+    public final void onTick(float dt, AnyRef<ChunkStore> ref, CommandBuffer<ChunkStore> commandBuffer) {
+        logger.atWarning().log("onTick");
+    }
 
     // ////////////////////////////////
     // IOnUniverseTick
     // ////////////////////////////////
 
-    // @Override
-    // public final void onUniverseTick(float dt, int index, Store<ChunkStore> store) {
-    //     // logger.atWarning().log(id + ") onUniverseTick");
-    // }
+    @Override
+    public final void onUniverseTick(float dt, int index, Store<ChunkStore> store) {
+        logger.atWarning().log("onUniverseTick");
+    }
+
+    // ////////////////////////////////
+    // IOnWorldTick
+    // ////////////////////////////////
+
+    @Override
+    public final void onWorldTick(
+        float dt,
+        ArchetypeChunk<ChunkStore> archetypeChunk,
+        Store<ChunkStore> store,
+        CommandBuffer<ChunkStore> commandBuffer
+    ) {
+        logger.atWarning().log("onUniverseTick");
+    }
 
     // ////////////////////////////////
     // IOnScheduledTick
@@ -105,7 +115,7 @@ public final class EventTestComponent
     public final TickSchedule onScheduledTick(
         float dt,
         long worldTick,
-        Ref<ChunkStore> ref,
+        AnyRef<ChunkStore> ref,
         CommandBuffer<ChunkStore> commandBuffer
     ) {
         logger.atWarning().log("onScheduledTick | " + ref);

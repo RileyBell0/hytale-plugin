@@ -7,6 +7,7 @@ import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
 import dev.twunk.hytale.codec.auto.Serializable;
 import dev.twunk.hytale.interfaces.event.IOnAddRemove;
+import dev.twunk.hytale.ref.AnyRef;
 import dev.twunk.hytale.utils.BlockUtils;
 import dev.twunk.hytale.utils.Chat;
 import dev.twunk.hytale.utils.ChunkUtils;
@@ -17,7 +18,7 @@ import javax.annotation.Nullable;
 public class TestComponent_Component implements Component<ChunkStore>, IOnAddRemove<ChunkStore> {
 
     @Override
-    public void onEntityAdded(Ref<ChunkStore> ref, AddReason reason, CommandBuffer<ChunkStore> commandBuffer) {
+    public void onAdd(AnyRef<ChunkStore> ref, AddReason reason, CommandBuffer<ChunkStore> commandBuffer) {
         runTests(ref, commandBuffer, false);
     }
 
